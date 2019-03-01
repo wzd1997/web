@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<style type="text/css">
+  div{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    top: 0;
+    background-color: red;
+    border-radius: 50%;
+  }
+</style>
+<body>
+<div></div>
+
+
+
+
+<script type="text/javascript">
+  var oDiv = document.getElementsByTagName('div')[0];
+  oDiv.onmousedown = function (e) {
+    clearInterval(oDiv.timer)
+    var lastX = oDiv.offsetLeft;
+    var lastY = oDiv.offsetTop;
+    var event = e || window.event;
+    var disX = event.clientX - oDiv.offsetLeft;
+    var disY = event.clientY - oDiv.offsetTop;
+    document.onmousemove = function (e) {
+      var event = e || window.event;
+      var newL = event.clientX - disX;//鼠标位置
+      var newT = event.clientY - disY;
+      // lastX = this.offsetLeft;
+      // lastY = this.offsetTop;
+      iSpeedX = newL - lastX;
+      iSpeedY = newT - lastY;
+
+      lastX = newL;
+      lastY = newT;
+
+      oDiv.style.left = newL + 'px';
+      oDiv.style.top = newT + 'px';
+       
+    }
+            document.onmouseup = function (e) {
+             document.onmousemove = null;
+             document.onmouseup = null;
+             startMove(oDiv);
+            }
+    }
+
+var iSpeedX = 0,
+    iSpeedY = 0;
+function startMove (dom) {
+  var g = 3;
+  dom.timer = setInterval(function () {
+    iSpeedY += g;  
+    var newL = dom.offsetLeft + iSpeedX;
+    var newT = dom.offsetTop + iSpeedY;
+          
+    if (newL >= document.documentElement.clientWidth - dom.offsetWidth) {
+      newL = document.documentElement.clientWidth - dom.offsetWidth;
+      iSpeedX *= -1;
+      iSpeedX *= 0.8;
+    }
+    if (newL <= 0) {
+      newL = 0;
+      iSpeedX *= -1;
+      iSpeedX *= 0.8;
+    }
+    if (newT >= document.documentElement.clientHeight - dom.offsetHeight) {
+      newT = document.documentElement.clientHeight - dom.offsetHeight;
+      iSpeedY *= -1;
+      iSpeedY *= 0.8;
+      iSpeedX *= 0.8;
+    }
+    if (newT <= 0) {
+      newT = 0;
+      iSpeedY *= -1;
+      iSpeedY *= 0.8;
+    }
+    if (Math.abs(iSpeedY) < 1) {
+      iSpeedY = 0;
+    }
+    if (Math.abs(iSpeedX) < 1) {
+      iSpeedX = 0;
+    }
+    if (iSpeedY === 0 && iSpeedX === 0 && dom.offsetTop === (document.documentElement.clientHeight - dom.offsetHeight)) {
+      clearInterval(dom.timer);
+      newT = document.documentElement.clientHeight - dom.offsetHeight;
+    }
+    dom.style.left = newL + 'px';
+    dom.style.top = newT + 'px';    
+  }, 30)
+}
+  
+</script>
+</body>
+</html>

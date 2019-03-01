@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            text-align: center;
+        }
+        .wrapper{
+            width: 400px;
+            height: 150px;
+            display: inline-block;
+        }
+        .wrapper div{
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            margin: 5px 8px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            border-radius: 10px;
+            background: linear-gradient(to top,rgb(35, 35, 192),rgb(77, 77, 218))
+        }
+        input{
+            width: 350px;
+            height: 50px;
+            text-align: right;
+        }
+        .wrapper div:hover{
+            background: rgb(33, 33, 133);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="inp">
+            <input type="text" value="0">
+        </div>
+        <div class="wrapper">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>0</div>
+            <div>.</div>
+            <div>=</div>
+        </div>
+    </div>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(".wrapper").delegate("div","click",function(){
+            var a = $(this).text();
+            var b = $(".inp input").val();
+            if(b === "0"){
+                if(a === "="){               
+                    $(".inp input").val(b);
+                }else{
+                    $(".inp input").val(a);
+                }
+            }
+            else{
+                if(a === "="){               
+                    $(".inp input").val(b);
+                }else{
+                    $(".inp input").val(b + a);
+                }
+            }
+            
+            
+        })
+    </script>
+</body>
+</html>

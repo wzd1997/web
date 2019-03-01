@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script>
+        //  h("div",{class:"demo",id:"demo1"},["hello world",h("p",{class:"demo2"},["woshopibiaoqian"])]).render();
+        function vElement(tagName,prop,children) {
+            if(!(this instanceof vElement)){
+                return new vElement(tagName,prop,children)
+            }
+            this.tagName = tagName;
+            if(Object.prototype.toString.call(prop) === "[object Array]"){
+                children = prop;
+                prop = {};
+            }
+            this.prop = prop;
+            this.children = children;
+            var count = 0;
+            this.children.forEach(function(child,index){
+                if(child instanceof vElement){
+                    count += child.count;
+                }
+                count ++;
+            });
+            this.count = count;
+        }
+        vElement.prototype.render = function () {
+            var el = document.createElement(this.tagName);
+            var children = this.children;
+            var prop = this.prop;
+            for (const key in prop) {
+                if (prop.hasOwnProperty(key)) {
+                    var curProp = prop[key];
+                    el.setAttribute(key,curProp)
+                }
+            }
+            children.forEach(function (child,index) {
+                if(child instanceof vElement){
+                    var curChild = child.render();
+                }else{
+                    var curChild = document.createTextNode(child);
+                }
+                el.appendChild(curChild);
+            })
+           return el;
+        }
+       var dom = vElement("div",{class:"demo",id:"demo1"},["hello world",vElement("p",{class:"demo2"},["woshopibiaoqian"])]).render();
+       console.log(dom)
+    </script>
+</body>
+</html>

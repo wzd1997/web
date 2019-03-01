@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <!-- <button>隐藏飞机</button>
+    <button>显示飞机</button>
+    <button>显隐切换</button>
+    <hr>
+    <img src="./img/p3.png" alt="">
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        $("button:contains(隐藏)").on("click",function () {
+            console.log(123)
+        })
+    </script> -->
+    <!-- <div class="wrapper">
+        <h3>西游记</h3>
+        <p style="display:none;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus, quod, labore suscipit, quam assumenda ratione accusamus a enim cumque amet consequatur ipsum numquam saepe consequuntur quos officia perferendis fugit!</p>
+        <h3>红楼梦</h3>
+        <p style="display:none;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio soluta consequuntur ut. Sint harum numquam doloremque voluptates temporibus quidem cumque debitis, ut nemo exercitationem quam. Aliquid impedit sed officiis? Nobis.</p>
+        <h3>水浒传</h3>
+        <p style="display:none;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam neque blanditiis velit sit error iure doloribus, rerum adipisci nihil doloremque nobis deserunt ab incidunt dolore, accusamus voluptatem impedit enim dignissimos.</p>
+    </div>
+    <script src="D:\web\jquery\jquery-3.3.1.js"></script>
+    <script>
+        $(".wrapper h3").on("click",function () {
+            $(this).next().slideToggle(150).siblings("p").slideUp();
+        })
+    </script> -->
+    <!-- <img src="./img/44.jpg" alt=""> -->
+    <button style="z-index:999">生成</button>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $("button").on("click",function () {
+            var a = $("<img src='./img/44.jpg'>");
+            var left = Math.random() * $(document).width();
+            var top = Math.random() * $(document).height()
+            console.log(left)
+            a.css("left",left + "px").css("top",top + "px").appendTo("body");
+            a.fadeOut(1000);
+            a.fadeIn(1000);
+            a.fadeOut(1000);
+            a.fadeIn(1000);a.fadeOut(1000);
+            a.fadeIn(1000);a.fadeOut(1000);
+            a.fadeIn(1000);a.fadeOut(1000);
+            a.fadeIn(1000);a.fadeOut(1000);
+            a.fadeIn(1000);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper,
+        .guest{
+            display: inline-block;
+            border: 5px solid black;
+            font-size: 30px;
+            font-weight: bolder;
+        }
+        .guest{
+            position: absolute;
+            left: 400px;
+            top: 50px;
+            width: 200px;
+            
+        }
+        .wrapper div{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div>宫保鸡丁</div>
+        <div>鱼香肉丝</div>
+        <div>锅包肉</div>
+        <div>白灼菜心</div>
+        <div>东坡肉</div>
+        <div>麻婆豆腐</div>
+        <div>辣子鸡</div>
+        <div>北京烤鸭</div>
+    </div>
+    <div class="guest">
+        <span>已点</span>
+    </div>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(".wrapper div").css("cursor","pointer")
+        $(".wrapper").delegate("div","dblclick",function(){
+            var a = $(this).clone(true);
+            $(".guest").append(a)
+        })
+        $(".guest").delegate("div","dblclick",function(){
+            $(this).remove();
+        })
+    </script>
+</body>
+</html>

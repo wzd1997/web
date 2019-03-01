@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+    <title>QQe-mail 判断</title>
+</head>
+<body>
+    <div id="app">
+        <wzd :val='msg'></wzd>
+        <p>{{ msg }}</p>
+    </div>
+    <script>
+        Vue.component('wzd',{
+            template: `<div>
+                <span></span>
+                输入邮箱：<input type="text" v-model="value">
+                </div>`,
+            data(){
+                return {
+                    value: this.val
+                }
+            },
+            props: {
+                val:{
+                    type: String,
+                    default: ''
+                },
+                title:{
+                    type: String,
+                    default: ''
+                },
+                suc: {
+                    type: String,
+                    default: ''
+                },
+                err: {
+                    type: String,
+                    default: ''
+                },
+                info: {
+                    type: String,
+                    default: ''
+                },
+                reg: {
+                    type: RegExp,
+                    default: null
+                }
+            },
+            computed: {
+                msg(){
+                    if(this.value == ''){
+                        return this.info;
+                    }
+                }
+            }
+        })
+
+        new Vue ({
+            el: '#app',
+            data: {
+                msg: '',
+                scmsg: '输入正确',
+                erromsg: '请以@qq.com结尾'
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	/*	#demo{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}*/
+		/*span{
+			position: absolute;
+			left: 300px;
+			top: 0;
+			width: 2px;
+			height: 150px;
+			background-color: black;
+		}*/
+		ul{
+			position: absolute;
+			width: 1000px;
+			height: 150px;
+		}
+		li{
+			float: left;
+			width: 248px;
+			height: 148px;
+			border: 1px solid blue;
+
+		}
+		.wrapper{
+			position: absolute;
+			width: 248px;
+			height: 148px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+ <ul>
+ 	<li></li>
+ 	<li></li>
+ 	<li></li>
+ 	<li></li>
+ 	<li class="wrapper"></li>
+ </ul>
+
+
+  <script type="text/javascript">
+  	var liArray = document.getElementsByTagName('li');
+    for (var i = 0; i < liArray.length - 1; i++) {
+    	liArray[i].onmouseenter = function (e) {
+    		startmove(liArray[liArray.length - 1],this.offsetLeft)
+    	}
+    }
+
+    function startmove(dom, iTarget) {
+    	clearInterval(dom.timer);
+    	var iSpeed = 0,
+    		a = 0,
+    		u = 0.8;
+    	dom.timer = setInterval(function(){
+    		
+    		a = (iTarget - dom.offsetLeft) / 7;
+    		iSpeed += a;
+    		iSpeed *= u;
+
+
+    		
+    		if (Math.abs(dom.offsetLeft - iTarget) <= 1 && Math.abs(iSpeed) <= 1) {
+    			dom.style.left = iTarget + 'px';
+    			clearInterval(dom.timer)
+    		}
+
+    		dom.style.left = dom.offsetLeft + iSpeed + 'px';
+    	},30)
+    }
+  </script>
+</body>
+</html>

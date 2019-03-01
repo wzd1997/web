@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+        button{
+            background-color: rgba(0, 0, 255,0.7);
+            color: white;
+            font-weight: bolder;
+            font-size: 20px;
+            width: 250px;
+            height: 50px;
+            border-radius: 20px;
+            text-shadow: 3px 3px 5px black;
+            box-shadow: 2px 2px 5px 1px black;
+        }
+    </style>
+</head>
+<body>
+    <button class="LR">left-right</button>
+    <button class="TB">top-bottom</button>
+    <button class="LT_RB">leftTop-rightBottom</button>
+    <button clsaa="LRA">left-right-again</button>
+    <!-- <img src="./img/star.jpg" alt=""> -->
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        //绑定事件
+        $("button").on("click",function () {
+           var maxWidth = $(document).width();
+           var maxHeight = $(document).height();
+           var img = $("<img src='./img/star.jpg'>");
+           if($(this).hasClass("LR")){
+               img
+               .css("left","50px").css("top","60px")
+               .appendTo("body")
+               .animate({
+                   'left': maxWidth - 300 + '',
+                   'width': '300',
+                   'height': '300',
+                   'opacity': '0'
+               },3000,'linear',function(){
+                  $(this).remove();
+               })
+           } else if($(this).hasClass("TB")){
+               img
+               .css("top","60px").css("left","600px")
+               .appendTo("body")
+               .animate({
+                   'top': maxHeight - 300 + '',
+                   'width': '300',
+                   'height': '300',
+                   'opacity': '0'
+               },3000,'linear')
+               .fadeOut(1);
+           }else if($(this).hasClass("LT_RB")){
+               img
+               .css("top","60px").css("left","0")
+               .appendTo("body")
+               .animate({
+                   'left': maxWidth - 300 + '',
+                   'top': maxHeight - 300 + '',
+                   'width': '300',
+                   'height': '300',
+                   'opacity': '0'
+               },3000,'linear')
+               .fadeOut(1);
+           }else {
+               img
+               .css("left","0px").css("top","60px")
+               .appendTo("body")
+               .animate({
+                   'left': maxWidth - 300 + '',
+                   'width': '300',
+                   'height': '300',
+                   'opacity': '0'
+               },3000,'linear',function () {
+                   $(this).animate({
+                        'left': '0',
+                        'width': '50',
+                        'height': '50',
+                        'opacity': '1'
+                    },3000,'linear',function () {
+                        $(this).fadeOut(1)
+                    })
+               })
+
+           }
+        })
+    </script>
+</body>
+</html>

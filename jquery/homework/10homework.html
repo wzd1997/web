@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: antiquewhite;
+            background: rgba(0, 0, 255, 0.6); 
+        }
+        ul li{
+            background: yellowgreen;
+            color: brown;
+        }
+        div a,
+        ul li{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <a href="javascript:;" style="display: block;">产品大全</a>
+        <ul style="list-style:none;display: none;">
+            <li>冰箱</li>
+            <li>洗衣机</li>
+            <li>尿不湿</li>
+        </ul>
+    </div>
+    <div class="wrapper" style=" cursor: pointer;">
+        <h3>西游记</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem repellendus, quod, labore suscipit, quam assumenda ratione accusamus a enim cumque amet consequatur ipsum numquam saepe consequuntur quos officia perferendis fugit!</p>
+        <h3>红楼梦</h3>
+        <p style="display:none;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio soluta consequuntur ut. Sint harum numquam doloremque voluptates temporibus quidem cumque debitis, ut nemo exercitationem quam. Aliquid impedit sed officiis? Nobis.</p>
+        <h3>水浒传</h3>
+        <p style="display:none;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam neque blanditiis velit sit error iure doloribus, rerum adipisci nihil doloremque nobis deserunt ab incidunt dolore, accusamus voluptatem impedit enim dignissimos.</p>
+    </div>
+    <script src="jquery-3.3.1.js"></script>
+    <script src="10homework.js"></script>
+    <script>
+        $("div a").clickXY();
+        $(".wrapper h3").shouFQ("p");
+    </script>
+</body>
+</html>

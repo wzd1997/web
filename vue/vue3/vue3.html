@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="vue3.css">
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+</head>
+<body>
+    <div class="task">
+        <h2>任务计划列表</h2>
+    </div>
+    <div class="task-middle">
+        <div class="location">
+            <h3>添加任务：</h3>
+            <input type="text" class="task-add" v-on:keyup.enter="addTodo" v-model="inputValue">
+            <ul>
+                <li>{{filterList}}个任务未完成</li>
+                <li>
+                    <a href="#all">所有任务</a>
+                    <a href="#unfinish">未完成任务</a>
+                    <a href="#finish">完成任务</a>
+                </li>
+            </ul>
+            <h3>任务列表：</h3>
+            <span class="no-task" v-show="!list.length">未添加任何任务</span>
+            <div class="todolist" v-for="item in hashVary">
+                <div class="task-list" v-bind:class="{editing:item === editing}">
+                    <input type="checkbox" v-model="item.checked">
+                    <label for="task-edit" v-bind:class={finish:item.checked} @dblclick="editingTodo(item)">{{item.title}}</label>
+                    <button class="cancel" @click="cancel(item)">X</button>
+                </div>
+                <input type="text" class="task-edit" v-focus="item === editing" @keyup.enter="edited" @blur="edited" v-model="item.title"  v-blur="enter" @keyup.esc="cencleEdit(item)">
+            </div>
+        </div>
+    </div>
+    <script src="./vue3.js"></script>
+</body>
+</html>

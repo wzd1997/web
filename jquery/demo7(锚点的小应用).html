@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+   .tabs{
+     list-style: none;
+   }
+   a{
+     color:#000;
+     text-decoration:none;
+   }
+   .tabs li{
+     display:inline-block;
+     padding:8px 15px;
+     border-bottom:1px solid #ddd;
+   }
+   .tabs li.active{
+     border:1px solid #aaa;
+     border-bottom:none;
+   }
+   .panes>div{
+     display:none;
+   }
+   .panes>div.active{
+     display:block;
+   }
+   p.active{
+     display:none;
+   }
+  </style>
+</head>
+<body>
+<ul class="tabs">
+  <li >
+    <a href="#tc10">十元套餐</a>
+  </li><li class="active">
+    <a href="#tc20">二十元套餐</a>
+  </li><li>
+    <a href="#tc30">三十元套餐</a>
+  </li>
+</ul>
+
+<div class="panes">
+  <div id="tc10">十元套餐:lorem</div>
+  <div id="tc20" class="active">二十元套餐:lorem</div>
+  <div id="tc30">三十元套餐:lorem</div>
+  <p class="active">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium unde repudiandae maiores earum. Deserunt impedit magni unde iure ut est nam officiis repellendus. Maxime, sint sit quos voluptates laborum officiis!</p>
+   
+</div>
+
+<script src="jquery-1.11.3.js"></script>
+<script>
+  $(".tabs li a").click(function(e){
+    e.preventDefault();
+    //被点击的a  父元素添加 active
+      $(this).parent().addClass("active").siblings().removeClass("active");
+      var h = $(this).attr("href");
+      console.log(h);
+      $($(this).attr("href")).addClass("active").siblings().removeClass("active");
+
+  })
+// var p = document.querySelector("active");
+// console.log(p);
+// p.remove();
+// var p = document.getElementsByClassName("active")[0];
+// p.remove();
+</script>
+</body>
+</html>

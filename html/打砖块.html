@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <title>打砖块</title>
+    <style>
+        .wrapper {
+            position: relative;
+            top: 50px;
+            width: 480px;
+            height: 600px;
+            background: rgb(87, 83, 83);
+        }
+
+        .navbar-form {
+            width: 480px;
+        }
+
+        .form-group {
+            margin-left: 85px;
+            color: aliceblue;
+        }
+
+        .row {
+            margin: 0;
+            width: 100%;
+            display: inline-block;
+        }
+
+        .top {
+            margin-top: 50px;
+        }
+
+        .row .col-md-2 {
+            height: 20px;
+            background: rgb(4, 132, 218);
+            margin: 20px 7px;
+        }
+
+        .row .move {
+            position: absolute;
+            left: 180px;
+            bottom: 5px;
+            height: 5px;
+            background: rgb(51, 219, 149);
+        }
+
+        .wrapper .ball {
+            width: 15px;
+            height: 15px;
+            background: rgb(197, 214, 39);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 10px;
+            left: 235px;
+        }
+        .header{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <button>开始</button>
+        <button>暂停</button>
+    </div>
+    <form class="navbar-form navbar-left" role="search" style="display:none;">
+        <div class="form-group">
+            分数：<input type="text" class="form-control" placeholder="0">
+        </div>
+    </form>
+    <div class="wrapper container">
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="ball"></div>
+        <div class="row">
+            <div class=" move col-md-3 board"></div>
+        </div>
+    </div>
+
+
+    <script>
+        var btnStart = document.getElementsByTagName('button')[0];
+        var btnPause = document.getElementsByTagName('button')[1];
+        var oWrapper = document.getElementsByClassName('wrapper')[0];
+        var oWrapper_left = oWrapper.offsetLeft;
+        var oWrapper_Width = oWrapper.offsetWidth;
+        var oWrapper_Height = oWrapper.offsetHeight;
+        var oBall = document.getElementsByClassName('ball')[0];
+        var mark = document.getElementsByClassName('form-control')[0];
+        var oBoard = document.getElementsByClassName('board')[0];
+        var oBoard_Width = oBoard.offsetWidth;
+        var oBoard_Top = oBoard.offsetTop;
+
+        var oSpeedX = 4,
+            oSpeedY = -3;
+
+        var oBlock = document.getElementsByClassName('col-md-2');
+        var oBlock_length = oBlock.length;
+
+        // 点击开始   开始游戏
+        btnStart.onclick = function (e) {
+
+            document.onmousemove = function (e) {
+
+                var event = e || window.event;
+                oBoard.style.left = event.clientX - oWrapper_left + 'px';
+                if (oBoard.offsetLeft <= 0) {
+                    oBoard.style.left = "0px";
+                } else if (oBoard.offsetLeft > oWrapper_Width - oBoard_Width) {
+                    oBoard.style.left = oWrapper_Width - oBoard_Width + "px";
+                }
+            }
+
+
+
+            var arrLeft = [],
+                arrTop = [],
+                oBlock_Width = oBlock[0].offsetWidth,
+                oBlock_Height = oBlock[0].offsetHeight;
+
+            for (var i = 0; i < oBlock_length; i++) {
+                oBlock[i].classList.add('num' + i);
+                arrLeft.push(oBlock[i].offsetLeft);
+                arrTop.push(oBlock[i].offsetTop);
+            }
+
+            clearInterval(oBall.timer);
+            oBall.timer = setInterval(function () {
+
+                var newLeft = oBall.offsetLeft + oSpeedX,
+                    newTop = oBall.offsetTop + oSpeedY;
+
+                for (let k = 0; k < oBlock_length; k++) {
+                    eval(
+                        `
+                    //撞击上边框
+                if (newTop >= arrTop[k] - 15 &&
+                    newTop <= arrTop[k] + oBlock_Height - 15 &&
+                    newLeft >= arrLeft[k] - 7.5 &&
+                    newLeft <= arrLeft[k] + oBlock_Width - 7.5) {
+
+                    if (!oBlock[k].style.backgroundColor) {
+                        oSpeedY *= -1;
+                        oBlock[k].style.backgroundColor = "rgb(87, 83, 83)";
+                        mark.value = +mark.value + 1;
+                    }
+
+                }
+                //撞击下边框
+                if (newTop >= arrTop[k] &&
+                    newTop <= arrTop[k] + oBlock_Height &&
+                    newLeft >= arrLeft[k] - 7.5 &&
+                    newLeft <= arrLeft[k] + oBlock_Width - 7.5) {
+
+                    if (!oBlock[k].style.backgroundColor) {
+                        oSpeedY *= -1;
+                        oBlock[k].style.backgroundColor = "rgb(87, 83, 83)";
+                        mark.value = +mark.value + 1;
+                    }
+
+                }
+                //撞击左边框
+                if (newTop >= arrTop[k] - 7.5 &&
+                    newTop <= arrTop[k] + oBlock_Height - 7.5 &&
+                    newLeft >= arrLeft[k] - 15 &&
+                    newLeft <= arrLeft[k] + oBlock_Width - 15) {
+
+                    if (!oBlock[k].style.backgroundColor) {
+                        oSpeedX *= -1;
+                        oBlock[k].style.backgroundColor = "rgb(87, 83, 83)";
+                        mark.value = +mark.value + 1;
+                    }
+
+                }
+
+                //撞击右边框
+                if (newTop >= arrTop[k] - 7.5 &&
+                    newTop <= arrTop[k] + oBlock_Height - 7.5 &&
+                    newLeft >= arrLeft[k] &&
+                    newLeft <= arrLeft[k] + oBlock_Width) {
+
+                    if (!oBlock[k].style.backgroundColor) {
+                        oSpeedX *= -1;
+                        oBlock[k].style.backgroundColor = "rgb(87, 83, 83)";
+                        mark.value = +mark.value + 1;
+                    }
+
+                }
+                    `
+                    )
+                }
+
+                // 边界
+                if (newLeft >= oWrapper.offsetWidth - oBall.offsetWidth) {
+                    oSpeedX *= -1
+                }
+                if (newTop <= 0) {
+                    oSpeedY *= -1
+                }
+                if (newLeft <= 0) {
+                    oSpeedX *= -1
+                }
+
+                //撞击挡板
+                if (newTop >= oBoard_Top - 17 &&
+                    newTop <= oWrapper_Height - 17 &&
+                    newLeft >= oBoard.offsetLeft - 7.5 &&
+                    newLeft <= oBoard.offsetLeft + 120 - 7.5) {
+                    oSpeedY *= -1
+                }
+
+                oBall.style.left = newLeft + 'px';
+                oBall.style.top = newTop + 'px';
+                // 出界 失败
+                if (newTop >= 600) {
+                    clearInterval(oBall.timer);
+                    oBall.style.left = '235px';
+                    oBall.style.top = '575px';
+                    oSpeedX = 4;
+                    oSpeedY = -3;
+                    document.onmousemove = null;
+                    oBoard.style.left = 180 + 'px';
+                    setTimeout("alert('失败了');", 500);
+
+                }
+                // 获胜
+                if (+mark.value === oBlock_length) {
+                    clearInterval(oBall.timer);
+                    setTimeout("alert('YOU WIN');location.reload(true);", 500);
+                }
+
+            }, 10)
+        }
+        btnPause.onclick = function () {
+            clearInterval(oBall.timer);
+        }
+    </script>
+</body>
+
+</html>

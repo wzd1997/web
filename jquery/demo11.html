@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script type="text/javascript">
+
+           var jiu,gai,sum;
+           function suanshu (m) {
+               sum = jiu = gai = m;
+              for(;gai >= 2;){
+                jiu = Math.floor(gai/2);
+                gai = gai%2 + jiu;
+                sum += jiu;
+              }
+              if(gai <= 1){
+                console.log(sum)
+              }
+           }
+            suanshu(200);
+            //jiu = 5
+            // 1瓶啤酒1块钱，2个空瓶可以换1瓶酒，问10块钱可以喝多少瓶酒？20块钱？200块钱？请写出你的思想或者函数方式
+            // x + x/2 + x/4
+            // 10 + 5 + 2 + 1+1
+        </script>
+        <ul id="nav">
+                <li><a href="#">品牌团</a></li>
+                <li><a href="错误！超链接引用无效。">整点聚</a></li>
+                <li><a href="错误！超链接引用无效。">聚家装</a></li>
+                <li><a href="#">量贩团</a></li>
+                <!-- {
+                    "index":1, //序号
+                    "name":"品牌团",
+                    "link":"http://m.feiniu.com/tg/brand.html"
+                    } -->
+        </ul>
+        <script src="jquery-3.3.1.js"></script>
+        <script>
+            $("li a").on("click",function(){
+                var obj = {};
+                obj["name"] = $(this).html();
+                console.log(obj)
+            })
+        </script>
+</body>
+</html>

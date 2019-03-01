@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<body>
+<ul>
+	<li class="demo">1</li>
+	<li class="demo">2</li>
+	<li class="demo">3</li>
+</ul>
+</body>
+<script src="jquery-3.3.1.js"></script>
+<script>
+	var oli = document.querySelectorAll('li');
+	//方法1
+	var obj = {};
+	for (var i = 0; i < oli.length; i++) {
+		(function (prop) {
+			oli[prop].addEventListener('click', function () {
+				console.log(prop);
+				console.log(oli[prop].innerHTML);
+			}, false)
+		} (i))
+	}
+	//方法2
+	// for (var key in oli) {
+	// 	var obj = oli[key];
+	// 	// console.log(obj)
+	// 	obj.onclick = function () {
+	// 		console.log(this.innerHTML)
+	// 	}
+	// }
+	// 方法3
+	// $('li').click(function () {
+	// 	console.log(this.innerHTML)
+	// })
+</script>
+</html>

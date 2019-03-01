@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./vue.js"></script>
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 500px;
+        }
+        .wrapper .conntect{
+            width: 100%;
+        }
+        .conntect .hot,
+        li .title{
+            margin-left:16px;
+            display: inline-block;
+            width: 70%;
+        }
+        .conntect .change,
+        li .num{
+            display: inline-block;
+            width: 20%;
+        }
+    </style>
+</head>
+<body>  
+    <div id="app">
+        <div class="wrapper">
+            <div class="conntect">
+                <span class="hot">搜索热点</span>
+                <span class="change">换一换</span>
+            </div>
+            <ul>
+                <li v-for="(item,index) in rank" :key="index">
+                    <span class="title">{{ item.title }}</span>
+                    <span class="num" @click="item.num += 5">{{ item.num }}万</span>
+                </li>
+            </ul> 
+        </div>
+    </div>
+    <script>
+        var hotlist = [
+                    {
+                        title: '谢霆锋的饼干致癌',
+                        num: 46
+                    },{
+                        title: '四川男子杀妻肢解',
+                        num: 42
+                    },{
+                        title: '18吨巧克力流成河',
+                        num: 40
+                    },{
+                        title: '腾讯回应封杀质疑',
+                        num: 39
+                    },{
+                        title: '半数飞行员退休',
+                        num: 33
+                    },{
+                        title: '王思聪评社交软件',
+                        num: 31
+                    }
+                ]
+            let vm = new Vue ({
+                el: '#app',
+                data: {
+                    hotlist: hotlist
+                },
+                computed: {
+                    rank(){
+                        return this.hotlist.sort(function (a,b) {
+                            return b.num - a.num
+                        })
+                    }
+                }
+            })
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas")
+        console.log(canvas)
+        var ctx = canvas.getContext("2d")
+        1.
+        ctx.lineWidth = 20; //线宽
+        ctx.strokeStyle = "red"; //线的颜色
+        ctx.fillStyle = "blue"; //填充色
+        ctx.moveTo(100,100);//画笔起始点
+        ctx.lineTo(200,100);//画笔从起始点始画到哪
+        ctx.lineTo(200,200);//继续画
+        ctx.closePath();//停止画笔 闭合路径 回到起始点
+        ctx.stroke(); //描边
+        ctx.fill();//填充
+
+
+        ctx.beginPath();//开始一段新的路径
+        ctx.rect(200,200,20,200);//画个矩形（起始点x，y，长，宽）
+        ctx.stroke(); //描边
+        ctx.strokeRect(100,100,50,50)//矩形描边
+        ctx.fillRect(50,50,50,50)//矩形填充
+        ctx.clearRect(50,50,20,30)//举行擦除
+
+        ctx.beginPath();
+        ctx.arc(400,400,50,0,Math.PI/180 * 180,1);
+        ctx.fill();
+        // ctx.arc(x,y,r,起始弧度,结束弧度,方向(顺时针0/逆时针1))
+        ctx.arcTo(x1,y1,x2,y2,r)//圆角
+        ctx.quadraticCurveTo(x1, y1, ex, ey) //二次贝塞尔曲线
+        // x1,y1 控制点
+        // ex,ey 结束点 
+        ctx.bezierCurveTo(x1, y1, x2, y2, ex, ey) //三次贝塞尔曲线
+        // x1,y1，x2,y2 控制点
+        // ex,ey 结束点 
+        ctx.translate(dx, dy)   //平移 重新映射画布上的 (0,0) 位置
+        ctx.scale(sx, sy)  // 缩放当前绘图
+        ctx.rotate(Math.PI)   //旋转当前的绘图
+        ctx.save(); ctx.restore();  
+        //保存当前图像状态的一份拷贝
+        //从栈中弹出存储的图形状态并恢复
+        ctx.setTransform(a, b, c, d, e, f) //先重置再变换
+        //参数：水平缩放、水平倾斜、垂直倾斜、垂直缩放、水平移动、垂直移动
+        ctx.transform(a, b, c, d, e, f) //在之前的基础上变换
+
+    </script>
+</body>
+</html>

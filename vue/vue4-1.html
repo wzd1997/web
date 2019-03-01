@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <my-component :name="mynum"></my-component>
+        <my-component :name="hisnum"></my-component>
+
+        <!-- <wzd></wzd> -->
+    </div>
+    
+    <script>
+        Vue.component("my-component",{
+            template: `<div>
+                <button @click="count++">{{count}}</button>
+                </div>`,
+            data: function (){
+                //局部count
+                return {
+                    //将Vue实例上的data变量mynum和hisnum绑定到 组件的属性变量name上 再将组件上的属性变量name传给组件的data变量count 
+                    //直接改变name属性变量会报错
+                    count: this.name
+                }
+            },
+            // props: ["name"]
+            // props: ["name","age"]
+            // props: {
+            //     name: String,
+            //     age: Number
+            // }
+            //props: {
+            //     name: [Number,String]
+            // }
+            //权限设置 需要是对象形式
+            props: {
+                name: {
+                    //定义变量类型
+                    type: Number,
+                    //默认值 没传值时获取
+                    default: 0,
+                    //必须传值(在组建标签上传值)
+                    // required: true,
+                }
+            }
+        }) 
+        new Vue({
+            el:"#demo",
+            data: {
+                mynum: 1,
+                hisnum: 2
+            },
+            components: {
+                "wzd":{
+                    template: `<div>我是局部组建</div>`
+                }
+                
+            },
+            // template: `<div>我是局部组建</div>`
+        })   
+        // new Vue({
+        //     el: '#app',
+        //     // router,
+        //     components: { App },
+        //     template: '<App/>'
+        // })
+
+        
+        
+        
+    </script>
+</body>
+</html>

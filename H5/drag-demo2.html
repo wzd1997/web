@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            margin-top: 20px;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            /* text-align: center; */
+            background: rgba(20,20,20,0.3);
+            /* color: #fff; */
+        }
+        span{
+            display: block;
+            margin-top: 20px;
+            width: 400px;
+            height: 200px;
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="item1" draggable="true" style="color:red">列表1</div>
+    <div id="item2" draggable="true" style="color:green">列表2</div> 
+    <div id="item3" draggable="true" style="color:blue">列表3</div>
+    <div id="item4" draggable="true" style="color:blueviolet">列表4</div>
+    <div id="item5" draggable="true" style="color:black">列表5</div>
+    <span>delete</span>
+    <script>
+        var oDiv = document.querySelectorAll("div");
+        var oSpan = document.querySelector("span");
+        var body = document.querySelector("body");
+        // console.log(oDiv[0])
+        for (const i in oDiv) {
+            if (oDiv.hasOwnProperty(i)) {
+                oDiv[i].addEventListener("dragstart",function (e) {
+                    var event = e.target;
+                    // console.log(e.target.id);
+                    e.dataTransfer.setData("data",event.id)
+                },false)
+                oDiv[i].addEventListener("dragover",function (e) {
+                    e.preventDefault();
+                },false);
+                oDiv[i].addEventListener("drop",function (e) {
+                    // console.log(this)
+                    var oId = e.dataTransfer.getData("data");
+                    switch(oId){
+                        case "item1": body.insertBefore(oDiv[0],this);
+                        break;
+                        case "item2": body.insertBefore(oDiv[1],this);
+                        break;
+                        case "item3": body.insertBefore(oDiv[2],this);
+                        break;
+                        case "item4": body.insertBefore(oDiv[3],this);
+                        break;
+                        case "item5": body.insertBefore(oDiv[4],this);
+                        break;
+                    }
+                },false)                
+            }
+        }
+        oSpan.addEventListener("dragover",function(e) {
+            e.preventDefault();
+        },false)
+        oSpan.addEventListener("drop",function (e) {
+            var oId = e.dataTransfer.getData("data");
+            switch(oId){
+                case "item1": oDiv[0].remove();
+                break;
+                case "item2": oDiv[1].remove();
+                break;
+                case "item3": oDiv[2].remove();
+                break;
+                case "item4": oDiv[3].remove();
+                break;
+                case "item5": oDiv[4].remove();
+                break;
+            }
+        },false)
+        // oDiv.addEventListener("dragstart",function (e) {
+        //     console.log(e.target)
+        // },false)
+    </script>
+</body>
+</html>

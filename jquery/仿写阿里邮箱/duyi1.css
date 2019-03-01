@@ -1,0 +1,343 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.rightHead a{
+    color: rgb(132, 132, 132); 
+    text-decoration: none;
+}
+.oPhone{
+    display: none;
+    position:absolute;
+    z-index: 999;
+    width: 160px;
+    height: 160px;
+    top:55px;
+    right: 270px;
+    background-color: white;
+}
+.head{
+    position: relative;
+    width: 1000px;
+    height: 60px;
+    margin: 0 174.5px;
+}
+.head .rightHead{
+    position: absolute;
+    top: 26px;
+    right: -45px;      
+     /* //-250 */
+    width: 500px;
+    height: 24px;
+}
+.head .leftHead{
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    width: 222px;
+    height: 50px;
+    text-align: center;
+}
+.leftHead img{
+    margin: 7px 0;
+}
+.head .rightHead::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.rightHead li{
+    float: left;
+    padding: 0 12px;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+}
+.rightHead .oBorder{
+    border-left: 1px solid rgb(220,220,220);
+}
+.bgImg{
+    position: relative;
+    /* padding: 0 174.5px; */
+    width: 100%;
+    height: 500px;
+    background-color: rgb(34,35,36);
+    background-image: url("cb7bc6b5-365f-4ded-b06c-4cf7ff6907f5");
+}
+.bgImg .first{
+    position: absolute;
+    top: 60px;
+    left: 204.5px;
+}
+.bgImg .rightInput{
+    position: absolute;
+    top: 65px;
+    right: 204.5px;
+    width: 338px;
+    height: 405px;
+    background-color: white;
+}
+.rightInput .topInput{
+    width: 338px;
+    height: 51px;
+}
+.topInput span{
+    display: inline-block;
+    width: 168.5px;;
+    height: 51px;
+    line-height: 51px;
+    text-align: center;
+    border-bottom: 1px solid rgb(220, 220, 220); 
+    color: #7e8185;
+    font-size: 14px;  
+}
+.topInput img{
+    position: absolute;
+    top: 12px;
+    left: 167.5px;
+    width: 1px;
+    height: 30px;
+    background-color: rgb(220, 220, 220);
+}
+.topInput .line{
+    border-bottom:solid 3px #36a7f4;
+}
+.rightInput .botInp{
+    position: absolute;
+    top: 80px;
+    margin: 0 41.5px;
+    width: 255px;
+    height: 178px;
+    text-align: center;
+}
+.textInp,
+.passwordInp{
+    /* position: absolute; */
+    width: 243px;
+    height: 22px;
+    line-height: 22px;
+    background-color: #eef3f8;
+    border: 1px solid #bac5d4;
+    color: #92a4bf;
+    padding: 5px;
+    border-radius: 5px;
+}
+.rightInput .botInp .idea{
+    width: 255px;
+    height: 16px;
+    line-height: 16px;
+    color: #92a4bf;
+    font-size: 12px;
+    margin: 7px auto;
+}
+.botInp .name{
+    position: relative;
+    width: 255px;
+    height: 30px;
+    vertical-align: center;
+
+}
+.botInp .rember{
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    height: 15px;
+    width: 15px;
+}
+.botInp .name div{
+    position: absolute;
+    top: 7px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+.botInp .name .username{
+    left: 20px;
+    width: 60px;
+    height: 20px;
+    color: #565551;
+}
+.botInp .name .forget{
+    right: 10px; 
+}
+.botInp .name .forget a{
+    color: blue;
+}
+.botInp .login{
+    width: 255px;
+    height:30px;
+    line-height: 30px;
+    border-radius: 5px;
+    display: block;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #3790CC;
+    background-color: #3B9BDC;
+}
+.local .iosImg{
+    background-image: url('https://mailsso.mxhichina.com/home/images/new_app_iOS.png');
+    height: 44px;
+    width: 64px; 
+    left: 20px; 
+}
+.local .androidImg{
+    background-image: url("https://mailsso.mxhichina.com/home/images/new_android.png");
+    width: 95px;
+    height: 44px;
+    left: 90px;
+}
+.local .loginImg{
+    background-image: url("https://mailsso.mxhichina.com/home/images/smart/sq_hover.png");
+    width: 42px;
+    height: 42px;
+    right: 0;
+    bottom: 0;
+}
+.local div{
+    position: absolute;
+}
+.rightInput .local{
+    position: absolute;
+    width: 338px;
+    height: 44px;
+    bottom: 30px;   
+}
+.bottom{
+    position: absolute;
+    bottom: 0;
+    width: 338px;
+    height: 30px;
+    background-color: rgb(220,220,220);
+}
+.rightInput .submit{
+    display: none;
+}
+.submit img{
+   position: absolute;
+   left: 64px;
+   top: 80px;
+}
+.submit div{
+    position: absolute;
+    left: 64px;
+    top: 310px;
+    text-align: center;
+    color: #898d90;
+    font-size: 14px;
+}
+.small_submit{
+    display: none;
+    text-align: center;
+    height: 500px; 
+}
+.small_submit span{
+    display: block;
+    margin-top: 20px;
+}
+.small_submit .up_text{
+    font-size: 14px;
+}.small_submit .down_text a{
+    color: #3B9BDC;
+    font-size: 13px;
+    text-decoration: none;
+}
+.small_submit .error_img{
+    position: absolute;
+    right: 0;
+    bottom: 30px;
+}
+.downOne,
+.downTwo,
+.downThree{
+    text-align: center;
+}
+.downOne ul li{
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 12px;
+    color: #444;
+    text-decoration: none;
+}
+.downTwo ul li{
+    cursor: pointer;
+    display: inline-block;
+    color: #999;
+    font-size: 12px;
+    margin-left: 5px;
+}
+.downThree span{
+    font-size: 12px;
+    color: #848585;
+}
+.bgImg {
+    width: 100%;
+    height: 500px;
+    /* border: 1px solid black; */
+    overflow: hidden;
+}
+.bgImg ul {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 6830px;
+    height: 500px;
+}
+.bgImg ul li {
+    float: left;
+    width: 1366px;
+    height: 500px;
+}
+.bgImg ul li img{
+    width: 1366px;
+    height: 500px;
+}
+.bgImg .sliderIndex {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 80px;
+    height: 20px;
+    margin-left: -40px;
+    text-align: center;
+}
+/* .bgImg .sliderIndex i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: black;
+    margin-right: 4px;
+    cursor: pointer;
+} */
+
+/* .bgImg .sliderIndex i.active {
+    background: #04e976;
+    width: 12px;
+    height: 12px;
+}    */
+.bgImg .btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: black;
+    opacity: 0.5;
+    top: 50%;
+    margin-top: -15px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    cursor: pointer;
+}
+.bgImg .btn.leftBtn {
+    left: 20px;
+}
+.bgImg .btn.rightBtn {
+    right: 20px;
+}
+.bgImg .btn:hover {
+    opacity: 1;
+}

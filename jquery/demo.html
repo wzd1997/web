@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .window{
+            width: 150px;
+            height: 300px;
+            background-color: aqua;
+        }
+        .btn{
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <button>login</button>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        var dian = true
+        $('button').on('click',function() {
+            if (dian) {
+                dian = false;
+                var oDiv = $('<div>');
+                    oDiv.addClass('window');
+                    $('body').append(oDiv)
+                console.log(oDiv);
+                var oBtn = $('<botton>');
+                    oBtn.addClass('btn');
+                    oBtn.html('shut down');
+                    $(oDiv).append(oBtn);
+                    oBtn.on('click',function(){
+                        oDiv.css('display','none')
+                        dian = true;
+                    })
+            }
+            
+        })
+        // var oUl = document.querySelector('ul');
+        // console.log(oUl)
+        // oUl.onclick = function(e) {
+        //     console.log(e.target)
+        // // }
+        // $('ul').on('click',function () {
+        //     console.log(this.innerHTML)
+        // })
+    </script>   
+</body>
+</html>

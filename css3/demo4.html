@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            position: relative;
+            perspective: 1200px;
+            width: 500px;
+            height: 500px;
+        }
+
+        .box {
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            margin-top: -100px;
+            margin-left: -100px;
+            animation: move 5s linear 500ms infinite;
+            animation-play-state: paused;
+        }
+
+        .box div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            opacity: 0.5;
+            color: bisque;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .wrapper .box div:nth-of-type(1) {
+            background: red;
+            transform: translateZ(100px);
+        }
+
+        .wrapper .box div:nth-of-type(2) {
+            background: green;
+            transform: rotateX(90deg) translateZ(100px)
+        }
+
+        .wrapper .box div:nth-of-type(3) {
+            background: yellow;
+            transform: rotateX(180deg) translateZ(-100px)
+        }
+
+        .wrapper .box div:nth-of-type(4) {
+            background: blue;
+            transform: rotateX(-90deg) translateZ(100px)
+        }
+
+        .wrapper .box div:nth-of-type(5) {
+            background: deeppink;
+            transform: rotateY(-90deg) translateZ(100px)
+        }
+
+        .wrapper .box div:nth-of-type(6) {
+            background: rgb(3, 97, 134);
+            transform: rotateY(90deg) translateZ(100px)
+        }
+
+        @keyframes move {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg)
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg) rotateZ(720deg)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+    </div>
+
+    <button class="start">start</button>
+    <button class="end">end</button>
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        $(".start").on("click",function () {
+            $('.box').css({"animationPlayState":"running"});
+        })
+        $(".end").on("click",function () {
+            $('.box').css({"animationPlayState":"paused"});
+        })
+    </script>
+</body>
+
+</html>

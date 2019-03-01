@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .ifshow{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="nav">
+            <span>点菜</span>
+            <span>评价</span>
+            <span>商家</span>
+            <span>邀请拼单</span>
+        </div>
+        <ul  v-for="item in list">
+            <wzd @addad="add(item)" @minusmi="minus(item)">
+                <span slot="foodname">{{item.foodname}}</span>
+                <span slot="price">{{item.price}}</span>
+                <span slot="num">{{item.num}}</span>
+            </wzd>
+        </ul>
+    </div>
+    <script>
+        Vue.component("wzd",{
+            template: `
+            <li>
+                <slot name="foodname"></slot>
+                <div>
+                    <slot name="price"></slot>
+                    <div>
+                        <button @click="minusnum()">-</button>
+                        <slot name="num"></slot>
+                    </div>
+                    <div>
+                        <button @click="addnum()">+</button> 
+                    </div>
+                </div>
+            </li>
+            `,
+            data: function(){
+                return {
+                    show: this.ifshow
+                }
+            },
+            methods: {
+                addnum(){
+                    this.$emit("addad")
+                    this.show = this.ifshow;
+                    console.log(this.show)
+                    console.log(this.ifshow)
+
+                },
+                minusnum(){
+                    this.$emit("minusmi")
+                }
+            },
+            props: {
+                ifshow: {
+                    type: Boolean,
+                    default: false
+                }
+            }
+        })
+        var list = [{
+                foodname: "鱼香肉丝",
+                price: 20,
+                num: 0
+            },{
+                foodname: "锅包肉",
+                price: 10,
+                num: 0
+            }
+        ];
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                list: list,
+                ifshow:'',
+                show: false,
+                all: '',
+                todo: ''
+            },
+            methods: {
+                add(event){
+                    console.log(event)
+                    this.show = true;
+                    event.num ++;
+                    // this.all += this.num * this.price;
+                },
+                minus(event){
+                    if(event.num <= 1){
+                        this.show = false;
+                        event.num = 0;
+                        // this.all = this.num * this.price;
+                    }else{
+                        event.num --;
+                        // this.all += this.num * this.price;
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

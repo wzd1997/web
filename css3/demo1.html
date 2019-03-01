@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* div{ */
+        /* width: 800px;
+            height: 450px;
+            background: blueviolet;
+            box-shadow: 160px 90px 50px 20px rgb(193, 95, 231);
+            color: beige;
+            font-size: 50px;
+            text-shadow: 10px 10px 5px black; */
+        /* width: 400px;
+            height: 400px;
+            position: absolute;
+            margin-left: -200px;
+            margin-top: -200px;
+            left: 50%;
+            top: 50%;
+            border-radius: 50%;
+            background:radial-gradient(circle 400px at 0px 400px,#fff,#000) */
+        /* width: 100px;
+            height: 100px;
+            background: red;
+            border: 200px solid black;
+            border-image: url(img1.jpg) 200 round; */
+        /* } */
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .one {
+            position: absolute;
+            left: 50%;
+            top: 100px;
+            margin-left: -300px;
+
+            width: 600px;
+            height: 25px;
+            background-color: orange;
+            border-radius: 4px;
+            box-shadow: 0px 3px 2px 0px black;
+
+        }
+
+        ul {
+            position: absolute;
+            /* top: 5px; */
+            left: 0px;
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 12px;
+            text-align: center;
+            color: white;
+            text-shadow: -1px 2px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        li::after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+
+        .one div {
+            position: absolute;
+            top: 6.5px;
+            width: 1px;
+            height: 12px;
+            border-left: 1px dashed white;
+        }
+
+        .th1 {
+            left: 100px;
+        }
+
+        .th2 {
+            left: 200px;
+        }
+
+        .th3 {
+            left: 300px;
+        }
+
+        .th4 {
+            left: 400PX;
+        }
+
+        .th5 {
+            left: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="one">
+        <ul>
+            <li>Home</li>
+            <div class="th1"></div>
+            <li>About me</li>
+            <div class="th2"></div>
+            <li>Portfolio</li>
+            <div class="th3"></div>
+            <li>Blog</li>
+            <div class="th4"></div>
+            <li>Resources</li>
+            <div class="th5"></div>
+            <li>Contact me</li>
+        </ul>
+    </div>
+</body>
+
+</html>

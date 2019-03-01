@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{title}}</p>
+        <button @click="add(3,$event)">+</button>
+        <p>{{num}}</p>
+        <input type="date">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                title: 'hello vue',
+                num: 0
+            },
+            methods: {
+                add(n,e){
+                    this.num += 3;
+                    console.log(e.target)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

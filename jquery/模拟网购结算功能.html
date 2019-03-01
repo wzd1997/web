@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟网购结算功能</title>
+    <style>
+        *{
+            list-style: none;
+        }
+        table{
+            width: 100%;  
+        }
+        .one,
+        .three{
+            width: 102.4px;
+            height: 62.5px;
+        }
+        .two{
+            width: 160px;
+            height: 47.6px; 
+        }
+        .four{
+            width: 60.5px;
+            height: 38.5px;
+        }
+        img{
+            float: left;
+        }
+        td{
+            width: auto;
+            height: 100%;
+        }
+        button{
+            position: absolute;
+            right: 20px;
+            top: 380px;
+        }
+        div{
+            position: absolute;
+            right: 80px;
+            top: 380px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <ul>
+        <li>ul1-li0</li>
+        <li>ul1-li0</li>
+        <li>ul1-li0</li>
+        <li>ul1-li0</li>
+    </ul>
+    <hr>
+    <ul>
+        <li>ul2-li1</li>
+        <li>ul2-li1</li>
+        <li>ul2-li1</li>
+        <li>ul2-li1</li>
+        <li>ul2-li1</li>
+    </ul> -->
+    
+    <table cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+              <th><input type="checkbox" name="all">全选</th>
+              <th>订单信息</th>
+              <th>收货人</th>
+              <th>订单金额</th>
+              <th>
+                  <select name="list" id="">
+                      <option value="list_1">操作</option>
+                      <option value="list_1">排序</option>
+                      <option value="list_1">管理</option>
+                      <option value="list_1">全选</option>
+                  </select>
+              </th>
+            </tr>
+        </thead>
+            <tr>
+                <td colspan="5">订单编号：2334123334 <span>京东自营</span></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>
+                    <img src="1.jpg" class="one">
+                    <img src="2.jpg" class="one">
+                </td>
+                <td>叮当</td>
+                <td class="carsh">￥123</td>
+                <td><span>删除 编辑 取消</span></td>
+            </tr>
+            <tr>
+                <td colspan="5">订单编号：2334123334 <span>京东自营</span></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><img src="3.jpg" class="two"></td>
+                <td>叮当</td>
+                <td class="carsh">￥123</td>
+                <td><span>删除 编辑 取消</span></td>
+            </tr>
+            <tr>
+                <td colspan="5">订单编号：2334123334 <span>京东自营</span></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>
+                    <img src="4.jpg" class="three">
+                    <img src="5.jpg" class="three">
+                </td>
+                <td>叮当</td>
+                <td class="carsh">￥123</td>
+                <td><span>删除 编辑 取消</span></td>
+            </tr>
+            <tr>
+                <td colspan="5">订单编号：2334123334 <span>京东自营</span></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><img src="6.jpg" class="four"></td>
+                <td>叮当</td>
+                <td class="carsh">￥456</td>
+                <td><span>删除 编辑 取消</span></td>
+            </tr>
+    </table>
+    <div></div>
+    <button>结算</button>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        //样式
+        $("th").css('background',"gray");
+        $("tr:odd td").css("backgroundColor","#eee");
+        $("tr td span").css("color","blue").css("cursor","pointer");
+        $("tr:even td:last-child").css('textAlign',"center");
+        $("tr:even td:nth-child(3),td:nth-child(4)").css('textAlign',"center");
+        $("tr:even td:not(:first-child,:nth-child(2))").css("borderLeft","1px solid #aaa");
+
+        // jQuery 方法
+        $("[name = all]").on("click",function(){
+            if($("[name = all]").prop("checked")){
+                $("tr:even input").prop("checked","checked")
+            }else{
+                $("tr:even input:checked").prop("checked",false)
+            }
+        })
+
+        $('input').on("click",function(){ 
+            var carsh = $("tr:even input:checked").parent().nextAll('.carsh').text();
+            var a = carsh.split("￥");
+            var sum = 0,num;
+            a.forEach(function(elem,index,array){
+                num = (+elem);
+                sum += num;
+            }) 
+            $("table + div").text("共计:" + sum);
+        })      
+
+
+    </script>
+    <!-- <script>
+        //Js 方法
+        var oInp = document.querySelector("tr th input");
+        var iInp = document.querySelectorAll("tr td input");
+        var oBtn = document.querySelector("button");
+        var oDiv = document.querySelector("table + div");
+        var allInp = document.querySelectorAll("input");
+        var len = iInp.length;
+        var leng = allInp.length;
+        //全选 与 全不选
+            oInp.addEventListener("click",function(){
+                console.log(oInp.checked)
+                if(oInp.checked){
+                    for(var i = 0; i < len; i++){
+                        if(!iInp[i].checked){
+                            console.log(iInp[i])
+                            // iInp[i].setAttribute("checked","checked");
+                            iInp[i].checked = "checked"
+                        }
+                    }  
+                }                       
+            },false)
+            oInp.addEventListener("click",function(){
+                if(!oInp.checked){
+                    for(var i = 0; i < len; i++){
+                        if(iInp[i].checked){
+                            iInp[i].checked = "";
+                        }                   
+                    } 
+                }                         
+            },false)
+            //绑定事件
+            for(var i = 0;i < leng; i++){
+                allInp[i].addEventListener("click",function(){
+                    var oHtml,num = 0,a;
+                    for(var i = 0; i < len; i++){
+                        if(iInp[i].checked){
+                        oHtml = iInp[i].parentElement.nextElementSibling.nextElementSibling.nextElementSibling.innerHTML;
+                        a = oHtml.split("￥");                        
+                        num += +a[1];
+                        }                          
+                    } 
+                    oDiv.innerHTML = '' + num;
+                },false)
+            }
+
+    </script> -->
+</body>
+</html>

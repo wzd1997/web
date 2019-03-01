@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    div{
+      position: absolute;
+      left: 0;
+      background-color: red;
+      width: 100px;
+      height: 100px;
+      opacity: 1;
+      margin-top: 40px;
+    }
+    #div0{
+      top: 0;
+    }
+    #div1{
+      top: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div id="div0"></div>
+  <div id="div1"></div>
+  <script type="text/javascript">
+    var oDiv1 = document.getElementsByTagName('div')[0];
+    var oDiv2 = document.getElementsByTagName('div')[1];
+    var iEndObj = {
+      left: 300,
+      top: 300,
+      width: 400,
+      height: 400,
+      opacity: 50
+    };
+    var iStartObj1 = {
+      left: 0,
+      top: 0,
+      width: 100,
+      height: 100,
+      opacity: 100
+    };
+    var iStartObj2 = {
+      left: 0,
+      bottom: 30,
+      width: 100,
+      height: 100,
+      opacity: 100
+    }
+    oDiv1.onclick = function(){
+ startMove(this, iEndObj, function () {
+  startMove(oDiv1,iStartObj1,function () {
+    startMove(oDiv2,iEndObj,function () {
+      startMove(oDiv2,iStartObj2,function () {
+        console.log('GGGGGG');
+      })
+    })
+  })
+})     
+    }
+
+
+
+
+function startMove (elem, targetObj, callback) {
+  clearInterval(elem.timer);
+  var iSpeed,iCur;
+  elem.timer = setInterval (function() {
+    var stop = true;
+    for(var attr in targetObj) {
+      if(attr === 'opacity'){
+        iCur = parseFloat(getStyle(elem,attr))*100;
+      }else{
+        iCur = parseInt(getStyle(elem,attr)) ;
+      }
+      iSpeed = (targetObj[attr] - iCur) / 17;
+      iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
+
+      if(attr === 'opacity'){
+        elem.style.opacity = (iCur + iSpeed )/100;
+      }else{
+        elem.style[attr] = iCur + iSpeed + "px";
+      }
+      if(targetObj[attr] !== iCur){
+        stop = false;
+      }
+      if(stop){
+        clearInterval(elem.timer);
+        callback();
+      }
+    }
+  },30)
+  
+}
+function getStyle (elem,prop) {
+
+  if(window.getComputedStyle) {
+      return window.getComputedStyle(elem,null)[prop];
+  }else {
+      return elem.currentStyle[prop]; //IE独有属性
+  }
+}
+
+ 
+  </script>
+
+</body>
+</html>

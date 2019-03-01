@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	input{
+		border:1px solid rgba(0,0,0,0.8);
+		text-align: right;
+		font-size: 15px;
+		font-weight: bold
+
+	}
+		
+	</style>
+	
+</head>
+<body>
+	minutes:<input type="text" value="0">
+	seconds:<input type="text" value="0">
+<script type="text/javascript">
+   var minutes = document.getElementsByTagName('input')[0];
+   var seconds = document.getElementsByTagName('input')[1];
+   var min = minutes.value;
+   var sec = seconds.value;
+   var timer = setInterval(function () {
+   	sec ++;
+   	if(sec == 60) {
+   		sec = 0;
+   		min ++;
+   		}
+   		minutes.value = min;
+   		seconds.value = sec;
+    if(min == 3) {
+   			clearInterval(timer);
+   		}
+   },1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// var strong = document.getElementsByTagName('strong')[0];
+	// var div = document.getElementsByTagName('div')[0];
+   // var div = document.getElementsByTagName('div')[0];
+   // div.style.width = "100px";
+   // div.style.height = "200px";
+   // div.style.backgroundColor = 'blue';
+   // var count = 0;
+   // div.onclick = function () {
+   // 	    count ++;
+   //     if(count % 2 == 0) {
+   //     	div.style.width = "200px";
+   //     	div.style.height = "100px";
+   //     	div.style.background = 'black';
+   //     }else {
+   //     	div.style.width = "100px";
+   //      div.style.height = "200px";
+   //      div.style.backgroundColor = 'blue';
+   //     }
+   // }
+  // var div = document.createElement('div');
+  // var text = document.createTextNode('wzd');
+  // var strong = document.createElement('s');
+  // var div = document.getElementsByTagName('div')[0];
+  // var span = div.getElementsByTagName('span')[0];
+  // var i = div.getElementsByTagName('i')[0];
+  // div.appendChild(strong);
+  // div.insertBefore(strong,i);
+
+
+
+
+
+
+// var typeof1 = function (n) {
+// 	if (typeof(n) == "object"){
+// 	 var a = Object.prototype.toString.call(n);
+// 	 switch(a){
+// 	 	case "[object String]":return 'string';
+// 	 	break;
+// 	 	case "[object Object]":return 'object';
+// 	 	break;
+// 	 	case "[object Array]":return 'array';
+// 	 	break;
+// 	 	case "[object Null]":return 'null';
+// 	 	break;
+// 	 	case "[object Number]":return 'number Object';
+// 	 	break;
+// 	 }
+// 	}else return typeof(n);
+// } 
+ // Array.prototype.unique = function () {
+ // 	var obj = {},
+ // 	    arr = [],
+ // 	    len = this.length;
+ // 	    for (var i = 0; i < this.length; i++) {
+ // 	    	if(!obj[this[i]]) {
+ // 	    		obj[this[i]] = this[i];
+ // 	    		arr.push(this[i]);
+ // 	    	}
+ // 	    }return arr;
+ // }
+    // var obj = {
+    // 	dp1 : {
+    // 		jc : {
+    // 			name : '133',
+    // 			age : 133
+    // 		}
+    // 	},
+    // 	dp2 : {
+    // 		name : 'deng',
+    // 		age : 321
+    // 	}
+    // }
+    // with(obj.dp2) {
+    // 	console.log(age);
+    // }
+  
+ //      var obj = {
+	// 	name:'wzd',
+	// 	sex:'male',
+	// 	card:['teacher','master',[123]],
+	// 	wife:{
+	// 		name:'132',
+	// 		son:{
+	// 			name:'789'
+	// 		}
+	// 	}
+	// }
+	// var obj1 = {}
+	// function deepClone (origin,target) {
+	// 	target = target || {};
+	// 	var tostr = Object.prototype.toString,
+	// 	    arr = "[object Array]";
+	// 	for(var prop in origin) {
+	// 		if(origin.hasOwnProperty(prop)) {
+
+ //               if(origin[prop] !== "null" && typeof(origin[prop]) == "object") {
+
+	// 			target[prop] = (tostr.call(origin[prop]) == arr) ? [] : {}
+
+	// 			// deepClone(origin[prop],target[prop]);
+
+	// 		}else target[prop] = origin[prop];
+
+	// 		}
+			
+	// 	}return target;
+
+	// }deepClone(obj,obj1);
+	</script>
+
+
+</body>
+</html>

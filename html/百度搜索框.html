@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .look{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 500px;
+            height: 600px;
+            margin-left: -250px;
+            margin-top: -300px;
+            border: 2px solid black;
+        }
+        .look .index{
+            position: absolute;
+            left: 100px;
+            top: 200px;
+            width: 300px;
+            height: 30px;
+            border: 2px solid gray;
+        }
+        .look ul{
+            position: absolute;
+            left: 100px;
+            top: 234px;
+            width: 300px;
+            border: 1px solid gray;
+            display: none;
+        }
+        ul li{
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+        ul li a{
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="look">
+        <div class="lost">
+            <input type="text" class="index">
+            <ul></ul>
+        </div>
+        
+    </div>
+    <script>
+        var oInput = document.getElementsByTagName('input')[0];
+        var oUl = document.getElementsByTagName('ul')[0];
+        var oDiv = document.getElementsByTagName('div')[0];
+        oInput.onkeyup = function () {
+            var keyWord = oInput.value;
+            var oScript = document.createElement('script');
+            oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + keyWord + '&cb=' + 'oJson';
+            document.body.appendChild(oScript);
+            oScript.remove();//不会创建多个script
+        }
+        function oJson (data) {
+            console.log(data);
+            oUl.innerHTML = '';//不会累加在后面
+            var dataList = data.s;
+            
+            if (dataList.length) {
+                oUl.style.display = 'block';
+                dataList.forEach(function (elem, index) {
+                    var oLi = document.createElement('li');
+                    var oA = document.createElement('a');
+                    oA.href = 'https://www.baidu.com/s?wd=' + elem;                   
+                    oA.innerText = elem;
+                    oLi.appendChild(oA);
+                    oUl.appendChild(oLi);
+                });
+            }else {
+                oUl.style.display = 'none';
+            }
+        }
+        // oDiv.onclick = function () {
+        //     oUl.innerHTML = '';
+        // }
+        
+    </script>
+   
+</body>
+</html>

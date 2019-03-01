@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px; 
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button>点击</button>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $("button").on("click",function(){
+            var oDiv = $("<div></div>")
+            var oSpan = $("<span>&times;</span>")
+            $("body").append(oDiv);
+            oDiv.append(oSpan);
+            function name () {
+                var r = Math.floor(Math.random()*256);
+                var g = Math.floor(Math.random()*256);
+                var b = Math.floor(Math.random()*256);                
+                return "rgb("+r+","+g+","+b+")";
+            }          
+            console.log(name())
+            oDiv.css("background", name())
+            oSpan.on("click",function(){
+                oDiv.css("display","none")
+            })
+        })
+    </script>
+</body>
+</html>

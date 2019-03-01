@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<style type="text/css">
+  div{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    top: 0;
+    background-color: red;
+    border-radius: 50%;
+  }
+</style>
+<body>
+<div></div>
+
+
+
+
+<script type="text/javascript">
+  var oDiv = document.getElementsByTagName('div')[0];
+  var iSpeedX = 100,
+        iSpeedY = 10,
+        g = 3
+
+  oDiv.addEventListener('click',function () {
+    oDiv.timer = setInterval(function () {
+    var newL = oDiv.offsetLeft + iSpeedX;
+        newT = oDiv.offsetTop + iSpeedY;
+        iSpeedY += g;    
+    if(newL >= document.documentElement.clientWidth - oDiv.offsetWidth) {
+      newL = document.documentElement.clientWidth - oDiv.offsetWidth;
+      iSpeedX *= -1;
+      iSpeedX *= 0.8;
+    }
+    if(newL <= 0) {
+      newL = 0;
+      iSpeedX *= -1;
+      iSpeedX *= 0.8;
+    }
+    if(newT >= document.documentElement.clientHeight - oDiv.offsetHeight) {
+      newT = document.documentElement.clientHeight - oDiv.offsetHeight;
+      iSpeedY *= -1;
+      iSpeedY *= 0.8;
+      iSpeedX *= 0.8;
+    }
+    if(newT <= 0) {
+      newT = 0;
+      iSpeedY *= -1;
+      iSpeedY *= 0.8;
+    }
+    oDiv.style.left = newL + 'px';
+    oDiv.style.top = newT + 'px';    
+  }, 50)
+  })
+  
+</script>
+</body>
+</html>

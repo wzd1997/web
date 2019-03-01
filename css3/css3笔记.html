@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* div{
+    width: 500px;
+    height: 500px;
+    border: 50px solid ;
+    background-color: rgb(43, 63, 14);
+    color: rgb(102, 21, 21);
+    border-top-left-radius: 50px 100px;
+    盒子阴影     
+    box-shadow: 10px 10px 50px 20px rgba(0, 0, 0, 0.8); 
+    文本阴影     
+    text-shadow: 10px 10px 5px black;
+    径向渐变 线性（linaer-gradient）
+    background:radial-gradient(circle 250px at 250px 250px,#000,#fff);
+    border-image: url(img1.jpg) 200 round;
+} */
+        /* 以demo开头的 $结尾 *含有 */
+        /*div[class ^= "demo"]
+div[class $= "demo"]
+div[class *= "demo"]
+div:target 跳转到锚点
+li:first-child 选取li且是第一个子元素
+li:last-child
+li:nth-child(1) 从1开始 (3n+1)从0开始
+li:nth-last-child()
+li:first-of-type 各组有父级的li中 第一个li
+li:last-of-type
+li:nth-last-of-type()
+li:nth-last-of-type()
+div + li     div后面紧挨着的的li 
+div ~ li     div后面所有的的li
+input:enabled 选取input中可用的
+input:disabled 选取input中不可用的
+input:checked input被选中时
+:read-only 选取只能读的
+:read-write 选取可读取的
+伪元素
+::selection{user-select:none} 匹配突出显示文本 (选取文本的时候)
+-moz-::selection 火狐*/
+
+        /*transform:rotateX(0deg) 绕XYZ轴旋转多少度
+    scaleX(2) XYZ方向放大缩小多少倍
+    scale(x,y)
+    skewX(0deg)XY方向扭曲
+    skew(x,y)
+    translateX(0px) 0%也行 XYZ方向平移
+    translate(x,y,z)
+transform-origin:top left/top/%
+transition:width(all) 1000ms linear 1000ms 过度动画
+transition-property         改变的属性 
+    -duration               改变的时间 
+    -timing-function        改变的方式 
+    -delay                  延时开始的时间  */
+
+        /* animation:move 3s linear 1s 2 reverse pause 动画 
+    -name                   执行动画keyframe的名
+    -duration               动画执行时间
+    -timing-function        过度函数速率
+    -delay                  执行延时时间
+    -iteration-count        执行次数
+    -direction:normal       默认值
+               reverse      动画反向播放
+               alternate    动画在奇数次正向，在偶数次反向
+               alternate-reverse 
+    -play-state:running     控制元素动画的播放状态
+                paused            
+    -fill-mode 动画开始和结束时的位置
+              :none         默认值动画如期执行后 直接返回初始帧
+              :forwards     动画在结束后继续应用最后的关键帧位置
+              :backwards    会在像元素应用动画样式时迅速应用动画的初始帧(在动画开始的地方延时)
+              :both         具备forwards和backwards
+多列布局 columns: [column-width][column-count]
+        column-width: 每一列的宽度
+        column-count: 列数
+        不要一起使用 会混乱
+        colum-gap：列宽 默认一个字体大小
+        colum-rule：1px solid/double #fff 列宽的样式
+box-sizing 盒子模型
+          ：border-box 混杂模式
+          ：content-box W3C标准模式
+弹性盒子 配合父元素 display：flex
+        子元素中 flex-grow: 5 容器多余子元素部分的 份数
+                flex-shrink 2 子元素多余容器部分的 份数
+                flex-basis 宽度基准 会覆盖 width
+                order：1 把dom按order的大小从小到大排列
+单个对齐方式     align-self: auto / flex-start / flex-end / basisline / center / stretch（拉伸）              
+写在容器上       align-items:                                                 
+设置在父元素上   transform-style: flat/preserve-3d
+景深    perspective: 800px;
+彩色屏幕 大于600px且小于900px 时执行 @media screen and (min-width:600px) and (max-width:900px) { css样式 }
+                 或                @media all and (min-width:600px,max-width:900px) { css样式 } 
+减少重排重绘    读操作 与 写操作 分开 
+                操作多个dom时可以采用 文档碎片 var a = document.creatDocumentFragment()
+                div.style.cssText = "padding=0;margin=0;"
+Bootstrap*/
+        .wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: greenyellow;
+
+        }
+    </style>
+</head>
+<!-- yanyu.chu@duyi-inc.com -->
+
+<body>
+    <div class="wrapper">
+        <div class="box">
+        </div>
+    </div>
+
+
+</body>
+
+</html>

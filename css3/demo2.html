@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .name{
+            border: 2px solid black;
+            width: 100px;
+            height: 124px;
+            text-align: center;
+        }
+        .name input{
+            width: 20px;
+            height: 20px;
+        }
+        div div{
+            position: absolute;
+            width: 100px;
+            height: 100px
+        }
+        div div:first-of-type{
+            background: red;
+        }
+        .name input:first-of-type:checked ~ div:first-of-type{
+            z-index: 999;
+        }
+        .name input:nth-of-type(2):checked ~ div:nth-of-type(2){
+            z-index: 999;
+            background: green;
+        }
+        .name input:nth-of-type(3):checked ~ div:nth-of-type(3){
+            z-index: 999;
+            background: yellowgreen;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="name">
+        <input type="radio" name="name" checked>
+        <input type="radio" name="name">
+        <input type="radio" name="name">
+        <div>a</div>
+        <div>b</div>
+        <div>c</div>
+    </div>
+</body>
+
+</html>

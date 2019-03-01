@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+    <link rel="stylesheet" href="vue4-4.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+        <el-alert 
+        title="警告提示的文案" 
+        type="error"></el-alert>
+        <el-alert :ifshow='false'></el-alert>
+        <el-alert :iconshow="false"></el-alert>
+        <el-alert>
+            <p slot='one'>666666666</p>
+            <p slot='two'>456</p>
+        </el-alert>
+        <el-alert  @clickalert="click"></el-alert>
+    </div>
+<script>
+    Vue.component('el-alert',{
+        template:`
+        <div role="alert" class="el-alert" :class="[colorfn]">
+            <!-- 图标 -->
+            <i class="el-alert__icon is-big" :class="[iconfn]" v-if='iconshow'></i>
+            <div class="el-alert__content">
+                <span class="el-alert__title is-bold">
+                        <slot name='one'>
+                            {{title}}
+                        </slot>
+                </span>
+                <slot name='two'>
+                    <p class="el-alert__description">
+                        文字说明文字说明文字说明文字说明文字说明文字说明
+                    </p>
+                </slot>
+                
+                <!-- X图标 -->
+                <i class="el-alert__closebtn el-icon-close" v-if="ifshow" @click="clickHandle"></i>
+            </div>
+        </div>
+        `,
+        props:{
+            title:{
+                type: String,
+                default: '默认的成功提示的文案'
+            },
+            type:{
+                type: String,
+                default: 'info'
+            },
+            ifshow:{
+                type: Boolean,
+                default: true
+            },
+            iconshow: {
+                type: Boolean,
+                default: true
+            }
+        },
+        computed:{
+            colorfn(){
+                return 'el-alert--' + this.type;
+            },
+            iconfn(){
+                return 'el-icon-' + this.type;
+            }
+        },
+        methods: {
+            clickHandle(){
+                this.$emit('clickalert')
+            }
+        }
+
+ 
+    })
+    new Vue({
+        el: '#demo',
+        methods: {
+            click(){
+                alert('自定义内容')
+            }
+        }
+    })
+    </script>
+</body>
+</html>

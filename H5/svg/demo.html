@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        svg{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -250px;
+            margin-top: -250px;
+        }
+        /* rect{
+            fill: transparent;
+            stroke: black;
+            stroke-width: 5px;
+        }
+        .ok{
+            fill: transparent;
+            stroke: black;
+        }
+        ellipse{
+            fill: transparent;
+            stroke: brown;
+            stroke-width: 5px;
+        } */
+        /* text{ */
+            /* fill: aqua; */
+            /* stroke: aqua;
+            stroke-width: 5px;
+            font-size: 30px; */
+        /* } */
+        path{
+            stroke: black;
+            stroke-dasharray: 30px; /*每30px画一段 空一段*/
+            
+        }
+    </style>
+</head>
+<body>
+    <svg width="500px" height="500px">
+        <!-- <rect x="5" y="100" width="200" height="200" rx="10" ry="10"></rect>
+        <circle r="30" cx="50" cy="150" class="ok"></circle>
+        <circle r="30" cx="150" cy="150" class="ok"></circle>
+        <circle r="10" cx="70" cy="150" ></circle>
+        <circle r="10" cx="170" cy="150" ></circle>
+        <ellipse rx="20" ry="10" cx="100" cy="250"></ellipse>
+        <polyline points="20 100, 25 30, 75 100, 100 30, 150 100,190 35, 180 100"></polyline>
+        <polygon points="50 200,100 150,150 200"></polygon>
+        <text x="50" y="400">hello,world</text> -->
+
+        <!-- <defs> 高斯滤镜
+            <filter id="Gaussian_Blur">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="100"/>
+            </filter>
+        </defs>
+        <rect x="0" y="0" width="500" height="500" fill="yellow" style="filter:url(#Gaussian_Blur)"/> -->
+        <path d="M 100 100 L 200 100 "/>
+    </svg>
+    
+</body>
+</html>

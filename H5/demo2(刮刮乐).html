@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮刮乐</title>
+    <style>
+        #canvas{
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <img src="./cup.png" alt="" style="width:300px;height:200px">
+    <script>
+        var canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+        //背景图片
+        canvas.style.backgroundImage = "url(./cup.png)"
+        //灰色涂层
+        ctx.fillStyle = "gray";
+        ctx.fillRect(0,0,500,500);
+        //绑定事件
+        canvas.addEventListener("mousedown",function () {
+            canvas.addEventListener("mousemove",gua,false)
+        },false)
+        
+        canvas.addEventListener("mouseup",function () {
+            canvas.removeEventListener("mousemove",gua,false)
+        },false)
+        //覆盖函数
+        function gua (e) {
+            var event = e || window.event;
+            var X = event.clientX,
+                Y = event.clientY;
+            ctx.beginPath();
+            ctx.fillStyle = "red";
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.arc(X,Y,25,0,Math.PI * 2);
+            ctx.fill();
+        }
+    </script>
+</body>
+</html>

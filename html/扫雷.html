@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>扫雷</title>
+	<style>
+		* {
+			padding: 0%;
+			margin: 0%;
+			font-size: 0%;
+		}
+
+		.body .wrapper div {
+			display: inline-block;
+			box-sizing: border-box;
+			width: 20px;
+			height: 20px;
+			font-size: 16px;
+			background: rgb(109, 102, 106);
+			border: 1px solid black;
+			text-align: center;
+			vertical-align: top;
+			line-height: 20px;
+		}
+
+		.wrapper {
+			width: 200px;
+			height: 200px;
+			border: 1px solid black;
+		}
+
+		.wrapper .boom {
+			background: url('C:/Users/Admin/Desktop/web/img/boom.jpg');
+		}
+
+		button {
+			width: 60px;
+			height: 25px;
+			text-align: 25px;
+			font-size: 20px;
+			text-align: right;
+			/* background: url() */
+		}
+
+		body {
+			font-size: 12px;
+		}
+	</style>
+</head>
+
+<body class="body">
+	<div class="wrapper"></div>
+	<button>10</button>
+	real:<button>10</button>
+	<script>
+		var btn = document.getElementsByTagName('button')[0];
+		var btnReal = document.getElementsByTagName('button')[1];
+		var blockWrapper = document.querySelector('.wrapper');
+
+		//动态创建100个格子 并添加编号为className
+		var arrBlock = [];
+		for (var i = 0; i < 10; i++) {
+			for (var j = 0; j < 10; j++) {
+				var arr_colm = document.createElement('div');
+				arr_colm.className = 'num' + i + j;
+				// arr_colm.classList.add('num');
+				arrBlock.push(arr_colm);
+			}
+		}
+		//创建文档碎片 将创建的100个DIV格子插入到body中
+		var allBlock = document.createDocumentFragment();
+
+		arrBlock.forEach(function (value, i, a) {
+			allBlock.append(value);
+		});
+		blockWrapper.append(allBlock);
+		document.body.append(blockWrapper);
+
+		var oDiv = document.querySelectorAll('.wrapper div');
+
+		//添加  10个  地雷
+		//动态创建100位的一个数组
+		var arrBoom = [];
+		for (let k = 0; k < 100; k++) {
+			arrBoom.push(k);
+		}
+		//随机排序
+		arrBoom.sort(function () {
+			return 0.5 - Math.random();
+		})
+		//选出前十位作为 地雷编号 添加className 为 boom
+		var boom = arrBoom.slice(0, 10);
+		boom.forEach(function (v, i, a) {
+			if (v < 10) {
+				v = '0' + v;
+				var boomDiv = document.getElementsByClassName('num' + v)[0];
+			} else {
+				var boomDiv = document.getElementsByClassName('num' + v)[0];
+			}
+
+			boomDiv.classList.add('boom');
+		})
+
+		var oSwitch = true;
+
+		//添加事件  取消扫雷部分的右键菜单事件
+		document.oncontextmenu = function (e) {
+			console.log(e);
+			if (e.clientX <= 202 && e.clientY <= 202) {
+				return false;
+			}
+		}
+		blockWrapper.addEventListener('click', BOOM, false);
+		blockWrapper.addEventListener('mousedown', collect, false);
+		
+		//鼠标右键事件
+		function collect(event) {
+			if (!event) {
+				event = window.event;
+			}
+
+			if (event.buttons === 2) {
+				if (!event.target.style.background) {
+
+					if (btn.innerHTML > 0) {
+						event.target.style.background = "url('C:/Users/Admin/Desktop/web/img/2.jpg') ";
+						btn.innerHTML = +btn.innerHTML - 1;
+						if (event.target.className.length > 5) {
+							btnReal.innerHTML = +btnReal.innerHTML - 1;
+						}
+					}	
+				} else {
+					event.target.style.background = '';
+					btn.innerHTML = +btn.innerHTML + 1;
+					if (event.target.className.length > 5) {
+						btnReal.innerHTML = +btnReal.innerHTML + 1;
+					}
+				}
+				if (btnReal.innerHTML === '0') {
+					location.reload();
+					alert('you WIN');
+				}
+			}
+
+		}
+
+		function BOOM(event) {
+
+
+			var event = event.target || event;
+
+
+			//判断是否踩雷
+			if (event.className.length > 5) {
+				event.style.background = "url('C:/Users/Admin/Desktop/web/img/boom.jpg')";
+				event.style.zIndex = 2;
+				var all_boom = document.getElementsByClassName('boom');
+				var len = all_boom.length;
+				for (let i = 0; i < len; i++) {
+					all_boom[i].style.background = "url('C:/Users/Admin/Desktop/web/img/boom.jpg')";
+					all_boom[i].style.zIndex = 2;
+				}
+				alert('失败');
+				setTimeout(() => {
+					location.reload();
+				}, 2000);
+
+
+			} else {
+				if (event.style.background !== 'white') {
+					event.style.background = 'white';
+
+					oSwitch = false;
+
+					//选出className的数字部分
+					var clickNum = +(event.className.slice(3, 5));
+
+					// 设置边框这种特殊位置的数字部分
+					var arrTop = [1, 2, 3, 4, 5, 6, 7, 8];
+					var arrRight = [19, 29, 39, 49, 59, 69, 79, 89];
+					var arrBottom = [91, 92, 93, 94, 95, 96, 97, 98];
+					var arrLeft = [10, 20, 30, 40, 50, 60, 70, 80];
+
+					if (clickNum === 0) {
+						var arrClickNum = [clickNum + 1, clickNum + 10, clickNum + 11];
+					} else if (clickNum === 9) {
+						var arrClickNum = [clickNum - 1, clickNum + 9, clickNum + 10];
+					} else if (clickNum === 90) {
+						var arrClickNum = [clickNum - 10, clickNum - 9, clickNum + 1];
+					} else if (clickNum === 99) {
+						var arrClickNum = [clickNum - 11, clickNum - 10, clickNum - 1];
+					} else if (arrTop.indexOf(clickNum) !== -1) {
+						var arrClickNum = [clickNum - 1, clickNum + 1, clickNum + 9, clickNum + 10, clickNum + 11];
+					} else if (arrRight.indexOf(clickNum) !== -1) {
+						var arrClickNum = [clickNum - 11, clickNum - 10, clickNum - 1, clickNum + 9, clickNum + 10];
+					} else if (arrBottom.indexOf(clickNum) !== -1) {
+						var arrClickNum = [clickNum - 11, clickNum - 10, clickNum - 9, clickNum - 1, clickNum + 1];
+					} else if (arrLeft.indexOf(clickNum) !== -1) {
+						var arrClickNum = [clickNum - 10, clickNum - 9, clickNum + 1, clickNum + 10, clickNum + 11];
+					} else {
+						var arrClickNum = [clickNum - 11, clickNum - 10, clickNum - 9, clickNum - 1, clickNum + 1, clickNum + 9, clickNum +
+							10, clickNum + 11
+						];
+					}
+
+					// 将点击位置的四周都遍历一遍判断是否是地雷
+					var boomNum = 0;
+					arrClickNum.forEach(function (v, i, a) {
+						if (v < 10) {
+							v = '0' + v;
+							var aroundBlock = document.getElementsByClassName('num' + v)[0];
+							var isBoom = aroundBlock.className.length;
+							if (isBoom > 5) {
+								boomNum++;
+							}
+						} else {
+							var aroundBlock = document.getElementsByClassName('num' + v)[0];
+							var isBoom = aroundBlock.className.length;
+							if (isBoom > 5) {
+								boomNum++;
+							}
+						}
+					})
+
+					event.innerHTML = boomNum;
+
+					//如果点击的周围没有地雷 向外扩散
+					if (event.innerHTML === '0') {
+						// event.style.color = 'white';
+						event.innerHTML = '';
+
+						arrClickNum.forEach(function (v, i, a) {
+							if (v < 10) {
+								v = '0' + v;
+								var aroundBlock = document.getElementsByClassName('num' + v)[0];
+								var isBoom = aroundBlock.className.length;
+								if (isBoom > 5) {
+									boomNum++;
+								} else {
+									BOOM(aroundBlock);
+								}
+
+							} else {
+								var aroundBlock = document.getElementsByClassName('num' + v)[0];
+								var isBoom = aroundBlock.className.length;
+								if (isBoom > 5) {
+									boomNum++;
+								} else {
+									BOOM(aroundBlock);
+								}
+
+							}
+						})
+					}
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

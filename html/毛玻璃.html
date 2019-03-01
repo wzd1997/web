@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            position: relative;
+            width: 400px;
+            height: 274px;
+            background-image: url("../img/cup.png");
+            background-size: 100%;
+        }
+
+        .content {
+            position: absolute;
+            left: 0;
+            top: 0%;
+            right: 0%;
+            bottom: 0%;
+            width: 300px;
+            height: 200px;
+            margin: auto;
+            background: rgba(102, 93, 93, 0.521);
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0%;
+            right: 0%;
+            bottom: 0%;
+            width: 300px;
+            height: 200px;
+            margin: auto;
+            background: rgba(129, 37, 37, 0.521);
+            filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel sequi accusamus minima
+            deserunt, doloremque qui. Provident quo ipsum eum, veritatis molestias rem omnis consectetur! Molestiae
+            accusamus quisquam illo nisi enim?</div>
+    </div>
+</body>
+
+</html>

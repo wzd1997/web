@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .time-wrapper{
+            width: 500px;
+        }
+        .prev-month{
+            border-right-color: red;
+        }
+        .next-month{
+            border-left-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="timer-wrapper">
+            <div class="date-header">
+                <div class="prev-month"></div>
+                <div class="content"></div>
+                <div class="next-month"></div>
+            </div>
+            <div class="date-content">
+                <div class="week-header">
+                    <div>日</div>
+                    <div>一</div>
+                    <div>二</div>
+                    <div>三</div>
+                    <div>四</div>
+                    <div>五</div>
+                    <div>六</div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+    
+        new Vue ({
+
+            el: '#app',
+            data : {
+
+            }
+        })
+        
+    </script>
+</body>
+</html>

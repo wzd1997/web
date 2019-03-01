@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+        }
+        #item1{
+            background: black;
+        }
+        #item2{
+            background: red;
+        }
+        span{
+            display: block;
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="item1" draggable="true"></div>
+    <div id="item2" draggable="true"></div>
+    <span></span>
+    <script>
+        var item1 = document.querySelector("#item1");
+        var item2 = document.querySelector("#item2");
+        var oSpan = document.querySelector("span");
+        console.log(oSpan)
+        item1.addEventListener("dragstart",function (e) {
+            e.dataTransfer.setData("data",e.target.id)
+        },false)
+        item2.addEventListener("dragstart",function (e) {
+            e.dataTransfer.setData("data",e.target.id)
+        },false)
+        oSpan.addEventListener("dragover",function (e) {
+            e.preventDefault();
+        },false)
+        oSpan.addEventListener("drop",function (e) {
+            console.log(e.dataTransfer.getData("data"))
+            var tf = e.dataTransfer.getData("data");
+            if(tf === "item1"){
+                oSpan.appendChild(item1);
+            }else {
+                oSpan.appendChild(item2);
+            }
+        },false)
+    </script>
+</body>
+</html>

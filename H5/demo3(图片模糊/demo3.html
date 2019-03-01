@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            border: 5px solid black;
+        }
+        img{
+            width: 300px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <img src="./cup.png" alt="">
+    <canvas width="500" height="500" id="canvas"></canvas>
+    <script src="C:\Users\Administrator\Desktop\web\html\H5\gaussFun.js"></script>
+    <script>
+        var canvas = document.querySelector("canvas");
+        var ctx = canvas.getContext("2d");
+        var img = document.querySelector("img");
+        // canvas.style.backgroundImage = "url(./cup.png)"
+        
+        img.onload = function () {
+            ctx.drawImage(img,0,0);
+            // ctx.fillRect(0,0,100,100)
+            var a = ctx.getImageData(0,0,500,500);
+            console.log(gaussBlur())
+            a = gaussBlur(a);
+            console.log(a)
+            ctx.putImageData(a, 0, 0);
+            
+        }
+            
+    </script>
+</body>
+</html>

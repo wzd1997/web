@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.5.21/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        菜名：<input type="text" v-model="foodname" @keyup.enter="addfood">
+        单价：<input type="number" v-model="price" @keyup.enter="addfood">
+        <button @click="addfood">add</button>
+        <button @click="deletefood">del</button>
+        <button @click="finish">OK</button>
+        <ul v-for="item in list">
+            <li>
+                <button @click="deletethis(item)" v-show="show">X</button>
+                <span>{{item.foodname}}</span>
+                <div>
+                    <span>￥{{item.price}}</span>
+                    <button @click="minus(item)">-</button>
+                    <span>{{item.num}}</span>
+                    <button @click="add(item)">+</button> 
+                </div>
+            </li>
+        </ul>
+    <div class="all">一共<span>{{showAll}}</span></div>
+    </div>
+    
+    <script>
+        var list = [{
+                foodname: "鱼香肉丝",
+                price: 20,
+                num: 0
+            },{
+                foodname: "锅包肉",
+                price: 10,
+                num: 0
+            },{
+                foodname: "地三鲜",
+                price: 5,
+                num: 0
+            }
+        ];
+        new Vue({
+            el: "#app",
+            data: {
+                list: list,
+                // re: 0,
+                // one: 0,
+                // all: 0,
+                foodname: '',
+                price: '',
+                show: false
+            },
+            methods: {
+                add(todo){
+                    // this.re = todo.num * todo.price;
+                    // todo.num++;
+                    // this.one = todo.num * todo.price - this.re;
+                    // this.all += this.one;
+                    todo.num++;
+                },
+                minus(todo){
+                    if(todo.num >= 1){
+                        // this.re = todo.num * todo.price;
+                        // todo.num--;
+                        // this.one = this.re - todo.num * todo.price ;
+                        // this.all -= this.one;
+                        todo.num--;
+                    }
+                },
+                addfood(){
+                    if(this.foodname && this.price){
+                        this.list.push({
+                            foodname: this.foodname,
+                            price: this.price,
+                            num: 0
+                        })
+                    }
+                },
+                deletethis(todo){
+                    this.list.splice(this.list.indexOf(todo),1),
+                    this.all = 0;
+                },
+                deletefood(){
+                    this.show = true;
+                },
+                finish(){
+                    this.show = false;
+                }
+            },
+            computed: {
+                showAll(){
+                    return this.list.reduce(function (now,old) {
+                        return now + old.num * old.price;
+                    },0)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

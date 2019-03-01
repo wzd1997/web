@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+        }
+        /* a{
+            text-decoration: none;
+        }
+        a,li{
+            width: 100px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid black;
+            border-radius: 5px; 
+            text-align: center
+        } */
+    </style>
+</head>
+<body>
+<!-- <ul>
+    <li class="iStyle">213</li>
+    <li>123</li>
+    <li>123213</li>
+</ul> -->
+<div class="dropdown">
+    <a href="#" style="display: block; ">产品大全</a>
+    <ul style="list-style:none;">
+        <li>冰箱</li>
+        <li>洗衣机</li>
+        <li>尿不湿</li>
+    </ul>
+</div>
+    <!-- <a href="#" >锚点</a>
+    <a href="#c1">当前页锚点</a>
+    <a href="2.html#c1">其他页锚点</a>
+    <a href="http://www.baidu.com">其他页面</a>
+    <a href="http://www.baidu.com#c1">其他页锚点</a>
+    <a href="http://www.baidu.com" title="one">title</a>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button> -->
+    <!-- <input type="text">
+    <input type="password">
+    <input type="submit">
+    <input type="text">
+    <input type="text">
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(":text").css("border","5px solid black" )
+        
+    </script> -->
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+     //1   
+    //  $('button').eq(0).click(function () {
+    //     $('a[title]').css('border', '2px solid black');
+    //  })
+    //  $($('button')[1]).click(function () {
+    //     $("a[href = '#']").css('color', 'red');
+    //  })
+    //  $('button').eq(2).click(function () {
+    //     $('a[href ^= "#"]').css('font-style', 'italic');
+    //  })
+    //  $('button').eq(3).click(function () {
+    //     $('a[href != "#"]').css('font-size', '2em')
+    //  })
+    //  $('button').eq(4).click(function () {
+    //     $('a[href *= "#"]').css('font-size', '2em')
+    //  })
+    // console.log($('[title]'))
+    //双次点击  判断
+        //  $('ul li').click(function () {
+        //     $('ul li').css('color','#000');
+        //     console.log($("ul li"))
+        //     $('.iStyle').removeClass();
+        //     console.log($("ul li"))
+        //     $(this).addClass('iStyle');
+        //     $('ul .iStyle').css('color','#e4393c');
+        // })
+        $('.dropdown ul').css('display','none');
+        $('.dropdown a').click(function() { 
+            $('.dropdown ul').css('display','block');
+        })
+        $('.dropdown ul').mouseleave(function () {
+            $('.dropdown ul').css('display','none');
+        })
+
+    </script> 
+    
+</body>
+</html>

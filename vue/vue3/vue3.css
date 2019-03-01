@@ -1,0 +1,123 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    list-style: none;
+    font-family: Tahoma;
+    outline: none;
+}
+
+a {
+    color: #666;
+    text-decoration: none
+}
+
+.task{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    background: red;
+}
+
+.task h2,.location{
+    width: 55%;
+    margin: 0 auto;
+}
+
+.task-middle{
+    width: 100%;
+    height: auto;  
+}
+
+.location h3,
+.task-add,
+ul{
+    margin-top: 15px;
+}
+
+.location .task-add{
+    width: 100%;
+    height: 30px;
+}
+ul li{
+    display: inline-block;
+}
+ul li:first-child{
+    color: red;
+}
+ul li:last-child {
+    float: right;
+}
+ul li:last-child a{
+    margin: 0 20px;
+}
+.no-task{
+    color: #666;
+}
+.task-list{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+/* .task-list:checked { */
+	/* background:#fff */
+/* } */
+.task-list input{
+    outline:none;
+	width:30px;
+	height:30px;
+	/* background-color:#ffffff; */
+	border:solid 1px #dddddd;
+	border-radius:50%;
+	position:relative;
+	vertical-align:top;
+	-webkit-appearance:none;
+}
+.task-list input:checked::after {
+	content:'';
+	top:8px;
+	left:6px;
+	position:absolute;
+	border:#1673ff solid 2px;
+	border-top:none;
+	border-right:none;
+	height:8px;
+	width:15px;
+	transform:rotate(-55deg);
+}
+.task-list label{
+    display: inline-block;
+    width: 60%;
+}
+.task-list button{
+    float: right;
+    width: 30px;
+	height: 30px;
+}
+.task-list input,label,button{
+    margin: 0 20px;
+}
+.no-task,.todolist{
+    /* text-align: left; */
+    display: block;
+    border: 1px solid rgba(209, 209, 209, 0.2);
+    margin-top: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background: rgba(209, 209, 209, 0.2);
+    overflow: hidden;
+}
+.finish{
+    text-decoration: line-through;
+    color: #999;
+}
+.task-edit{
+    margin: 0 15%;
+    width: 70%;
+    height: 22px;
+}
+.editing{
+    display: none;
+}
+

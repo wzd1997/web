@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        div{
+            width: 1190px;
+        }
+        ul li{
+            position: absolute;
+            float: left;
+            top: 0;
+            z-index: 1
+
+        }
+        ul{
+            width: 3200px;
+            height: 270px;
+        }
+        li,img{
+            width: 640px;
+            height: 270px;
+        }
+        .th1{
+            left: 0;
+        }
+        .th2{
+            left: 275px;
+            z-index: 2;
+        }
+        .th3{
+            left: 660px;
+        }
+        .th3 img,.th1 img{
+            width: 530px;
+            height: 224px;
+        }
+        .th4{
+            left: 1190px;
+        }
+        .th5{
+            left: 1830px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="th1"><img src="https://gw.alicdn.com/tfs/TB1uqUYo7zoK1RjSZFlXXai4VXa-640-270.jpg" alt=""></li>
+        <li class="th2"><img src="https://r1.ykimg.com/051000005BECE60C8B6EE476070C2897" alt=""></li>
+        <li class="th3"><img src="https://r1.ykimg.com/051000005BE570A7AD9AB765C10BB266" alt=""></li>
+        <li class="th4"><img src="https://r1.ykimg.com/051000005BDB02C3ADA80CC3F0047835" alt=""></li>
+        <li class="th5"><img src="https://gw.alicdn.com/tfs/TB1uqUYo7zoK1RjSZFlXXai4VXa-640-270.jpg" alt=""></li>
+    </ul>
+    
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        
+        var timer = setInterval(function () {
+            $('li:eq(0),li:eq(0) img').animate({
+                left: -530,
+                width: 0,
+                height: 0,
+                zIndex: 0,
+                opacity: 0
+            },2000).animate({
+                left: 660,
+                width: 530,
+                height: 224,
+                zIndex: 1,
+                opacity: 1
+            },2000).animate({
+                left: 275,
+                width: 640,
+                height: 270,
+                zIndex: 2,
+                opacity: 1
+            },2000).animate({
+                zIndex: 1,
+                left: 0,
+                width: 530,
+                height: 224,
+                opacity: 1
+            },2000).animate({
+                left: -530,
+                width: 0,
+                height: 0,
+                zIndex: 0,
+                opacity: 0
+            },2000)
+            
+            $('li:eq(1),li:eq(1) img').animate({
+                zIndex: 1,
+                left: 0,
+                width: 530,
+                height: 224,
+                opacity: 1
+            },2000).animate({
+                left: -530,
+                width: 0,
+                height: 0,
+                zIndex: 0,
+                opacity: 0
+            },2000).animate({
+                left: 660,
+                width: 530,
+                height: 224,
+                zIndex: 1,
+                opacity: 1
+            },2000).animate({
+                left: 275,
+                width: 640,
+                height: 270,
+                zIndex: 2,
+                opacity: 1
+            },2000).animate({
+                zIndex: 1,
+                left: 0,
+                width: 530,
+                height: 224,
+                opacity: 1
+            },2000)
+            $('li:eq(2),li:eq(2) img').animate({
+                left: 275,
+                width: 640,
+                height: 270,
+                zIndex: 2,
+                opacity: 1
+            },2000).animate({
+                zIndex: 1,
+                left: 0,
+                width: 530,
+                height: 224,
+                opacity: 1
+            },2000).animate({
+                left: -530,
+                width: 0,
+                height: 0,
+                zIndex: 0,
+                opacity: 0
+            },2000).animate({
+                left: 660,
+                width: 530,
+                height: 224,
+                zIndex: 1,
+                opacity: 1
+            },2000).animate({
+                left: 275,
+                width: 640,
+                height: 270,
+                zIndex: 2,
+                opacity: 1
+            },2000)
+            $('li:eq(3),li:eq(3) img').animate({
+                left: 660,
+                width: 530,
+                height: 224,
+                zIndex: 1,
+                opacity: 1
+            },2000).animate({
+                left: 275,
+                width: 640,
+                height: 270,
+                zIndex: 2,
+                opacity: 1
+            },2000).animate({
+                zIndex: 1,
+                left: 0,
+                width: 530,
+                height: 224,
+                opacity: 1
+            },2000).animate({
+                left: -530,
+                width: 0,
+                height: 0,
+                zIndex: 0,
+                opacity: 0
+            },2000).animate({
+                left: 660,
+                width: 530,
+                height: 224,
+                zIndex: 1,
+                opacity: 1
+            },2000)
+
+
+
+
+        },0)
+         
+    </script>
+</body>
+</html>

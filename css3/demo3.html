@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @keyframes irotate{
+            0%{
+                transform:rotateZ(0deg)
+            }
+            100%{
+                transform: rotateZ(360deg)
+            }
+        }
+        /* @keyframes move{
+           0%{
+               transform-origin:0% 0%;
+               transform: rotateZ(30deg)
+           } 
+           100%{
+               transform-origin:0% 0%;
+               transform: rotateZ(75deg)
+           }
+        } */
+        .die{
+            position: relative;
+            left: 100px;
+            top: 100px;
+            width: 300px;
+            height: 300px;
+            background: black;
+            background:linear-gradient(to top,#000,rgba(46, 43, 43, 0.8));
+        }
+        .img{
+            position: absolute;
+            left: 75px;
+            top: 75px;
+            width: 150px;
+            height: 150px;
+            background-image: url("img1.jpg");
+        }
+        div{
+            border-radius: 50%;
+            animation: irotate 12s linear  infinite paused ;
+        }
+        span{
+            position: absolute;
+            top: 5px;
+            left: 250px;
+            display: block;
+            width: 180px;
+            height: 10px;
+            background: black;
+            transform-origin:0% 0%;
+            transform: rotateZ(40deg);
+            transition: all 1s linear;  /*过度动画*/
+            /* animation: move 1s linear infinite both paused alternate; */
+        }
+        .run{
+            transform: rotateZ(75deg);
+        }
+    </style>
+</head>
+<body>
+    <span class=""></span>
+    <div class="die">
+        <div class="img"></div>
+    </div>
+    <button>run/paused</button>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+        var stop = false,
+            timer;
+        $("button").on("click",function(){//获取角度判断  未完善
+            stop = !stop;
+            clearTimeout(timer)
+            if(stop){
+                timer = setTimeout(function(){
+                $("div").css('animation-play-state','running');
+                },1000)
+                $("span").addClass("run")
+            }else{
+                $("div").css('animation-play-state','paused');
+                $("span").removeClass("run");
+            }
+            // if()
+        })
+    </script>
+</body>
+</html>

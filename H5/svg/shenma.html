@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        @keyframes show {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<svg width="580" height="400" xmlns="http://www.w3.org/2000/svg">
+    <path d="m37.5,117.4375c4,-4 9.83791,-6.57569 16,-8c14.74402,-3.40794 32,-6 47,-9l13,-2" id="svg_1" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m50.5,160.4375c8,-3 31,-10 57,-19l12,-6l3,-3l1,0" id="svg_2" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m80.5,113.4375c-1,0 -1.29888,2.00745 -1,8c0.50062,10.0374 1,22 1,30c0,12 -0.75256,14.01022 -1,17c-0.50171,6.06204 -0.61065,12.15927 -2,15c-1.58411,3.23892 -2,8 -2,13l-1,1" id="svg_3" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m53.5,202.4375c0,1 6.00254,1.14258 10,1c14.02675,-0.50032 22.14587,-0.93011 48,-5c5.03699,-0.79291 7,-3 9,-5l2,-1l1,-2" id="svg_4" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m157.5,89.4375c25,0 66,0 92,0l3,-2l1,0" id="svg_5" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m227.5,82.4375c-2,6 -2.43314,16.27494 -6,32c-1.39905,6.16788 -6,23 -8,31l0,3" id="svg_6" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m191.5,149.4375c3,0 10,0 27,0l18,0l12,0l4,0" id="svg_7" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m196.5,165.4375c-1,0 -2.41156,3.40401 -6,8c-3.48129,4.45877 -9.3163,6.52414 -15,18c-1.82993,3.69478 -5,10 -6,10l0,2l-1,1" id="svg_8" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m214.5,181.4375c1,0 1.48874,1.02997 1,5c-0.50377,4.09221 -2.79568,12.09114 -6,19c-2.82246,6.08553 -4.08394,8.30048 -1,9c7.86253,1.78343 22.03366,2.21661 44,1c9.04153,-0.50076 16,-2 16,-3c0,-1 0,-4 0,-6c0,-3 0.82706,-7.11626 0,-10c-2.60077,-9.06841 -11,-12 -16,-16l-6,-1l-1,0l-1,0" id="svg_9" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m228.5,195.4375c1,2 3.9183,4.11214 8,7c5.8867,4.16493 12,7 16,10l1,0l0,1l1,0" id="svg_10" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m289.5,195.4375c2,2 8,7 14,11l14,5l31,8l4,2" id="svg_11" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m339.5,135.4375c5,0 17.98892,-0.10834 37,-2c31.98239,-3.18236 52,-5 60,-5l14,-3l2,-1" id="svg_12" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m421.5,113.4375c0,2 0.60767,8.17696 -2,16c-6.5192,19.5576 -11.26657,24.81693 -29,40c-8.66095,7.41537 -17.83981,11.01291 -18,12c-0.50653,3.12144 7.01346,1.7928 24,3c48.0452,3.41447 68.99319,6.49998 124,7c0.99994,0.00909 2,0 1,0l-11,-3l-2,0" id="svg_13" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path stroke="#000" d="m456.5,163.4375c0,3 -0.47451,7.96599 -0.95,19c-0.47352,10.98869 -2.77807,25.01534 -5.7,40c-3.70879,19.01996 -6.48338,28.06134 -8.55,34c-1.75965,5.05658 -1.51305,7.86066 -2.85,8c-3.40861,0.35529 -6.02532,-8.4252 -12.35,-18c-6.94531,-10.51434 -17.1,-17 -21.85,-21l-3.8,-2l-0.95,-1" id="svg_14" stroke-width="1.5" fill="none"/>
+    <path d="m375.5,219.4375c0,9 0,14 -3,23l-5,8l-3,4l-1,0" id="svg_15" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+    <path d="m475.5,230.4375c1,0 3.21005,-0.14925 6,4c3.2536,4.83881 13.52139,19.51384 21,26c3.77728,3.276 7,5 7,6l1,0l1,0l1,0" id="svg_16" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+</svg>
+<script>
+    var path = document.getElementsByTagName('path');
+    var l = path.length;
+    var delay = 0;
+    for(var i = 0; i < l; i++) {
+        var leng = Math.round(path[i].getTotalLength());
+        path[i].style.strokeDasharray = leng;
+        path[i].style.strokeDashoffset = leng;
+        // console.log('show ' + leng + 'ms linear' + delay + 'ms forwards');
+        // path[i].style.transition = 'show ' + leng + 'ms linear ' + delay + 'ms forwards';
+        path[i].style.animation = 'show ' + leng + 'ms linear ' + delay + 'ms forwards';
+        delay += leng;
+    }
+
+</script>
+</body>
+</html>
